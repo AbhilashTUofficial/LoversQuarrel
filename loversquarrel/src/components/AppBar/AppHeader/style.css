@@ -1,0 +1,29 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 6px;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 50px;
+}
+
+.header-leading {
+  display: flex;
+  align-items: center;
+}
+
+.header-trailing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 6px;
+}

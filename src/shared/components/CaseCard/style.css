@@ -1,0 +1,30 @@
+.case-card {
+  width: 260px;
+  height: auto;
+  align-self: stretch;
+  flex-shrink: 0;
+  padding: 12px;
+}
+
+.case-number {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 2px;
+}
+
+.case-name {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 2px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+}

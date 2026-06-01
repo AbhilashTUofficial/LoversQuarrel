@@ -1,0 +1,30 @@
+.rounds-card {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-self: stretch;
+  flex-shrink: 0;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+}
+
+.rounds-number {
+  color: var(--gf-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 2px;
+}
+
+.rounds-subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 2px;
+}

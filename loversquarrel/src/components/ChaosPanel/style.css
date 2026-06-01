@@ -1,0 +1,25 @@
+.chaos-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+}
+.chaos-cards {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.chaos-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0 12px;
+  flex: 1;
+  height: 12vh;
+}
+.chaos-image {
+  object-fit: contain;
+  height: 50%;
+}

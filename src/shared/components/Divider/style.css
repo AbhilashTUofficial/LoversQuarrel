@@ -1,0 +1,7 @@
+.vertical-divider {
+  width: 2px;
+  background-color: var(--border);
+  align-self: stretch;
+  flex-shrink: 0;
+  margin: 0 12px;
+}

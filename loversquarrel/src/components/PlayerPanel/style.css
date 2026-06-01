@@ -1,0 +1,207 @@
+.player-header-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px 6px 12px;
+}
+
+.avatar {
+  width: 100px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.name-tag {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.name {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  gap: 6px;
+}
+
+.boy-name {
+  color: var(--bf-primary);
+  text-shadow: 2px 2px 8px var(--bf-primary);
+}
+
+.girl-name {
+  color: var(--gf-secondary);
+  text-shadow: 2px 2px 8px var(--gf-secondary);
+}
+@keyframes online-indication {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.bulb {
+  position: absolute;
+  top: 34px;
+  right: 24px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin: 8px 22px;
+  animation: 0.3s ease-in-out infinite alternate online-indication;
+  transform-origin: center;
+}
+
+.bulb-boy {
+  background-color: var(--bf-primary);
+  box-shadow: 2px 2px 8px var(--bf-primary);
+}
+
+.bulb-girl {
+  background-color: var(--gf-secondary);
+  box-shadow: 2px 2px 8px var(--gf-secondary);
+}
+
+.mode {
+  padding: 4px 12px;
+  border-radius: 24px;
+  font-size: 12px;
+  line-height: 18px;
+  width: fit-content;
+  backdrop-filter: blur(400px);
+}
+
+.mode-girl {
+  background-color: var(--gf-accent);
+  box-shadow: 2px 2px 8px var(--gf-accent);
+}
+
+.mode-boy {
+  background-color: var(--bf-accent);
+  box-shadow: 2px 2px 8px var(--bf-accent);
+}
+
+.info-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.2s ease;
+  color: var(--text-primary);
+}
+
+.player-traits {
+  padding: 6px 24px;
+}
+.traits {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.trait {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  gap: 6px;
+  margin: 8px 0;
+}
+.trait-name {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-primary);
+  width: 70%;
+}
+
+.trait-value {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.trait-progress-bar {
+  width: 100%;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--text-muted);
+  height: 6px;
+  border-radius: 6px;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 6px;
+}
+.progress-boy {
+  background-color: var(--bf-primary);
+}
+.progress-girl {
+  background-color: var(--gf-primary);
+}
+.thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  cursor: pointer;
+}
+
+.active-tag-container {
+  padding: 6px 12px 4px 24px;
+}
+
+.tags {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.active-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+  border-radius: 24px;
+  font-size: 12px;
+  line-height: 18px;
+  width: 100%;
+  backdrop-filter: blur(400px);
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.close-icon {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  transform: translate(50%, 10%);
+}
+
+.add-new-tag {
+  padding: 4px 16px;
+  border-radius: 24px;
+  font-size: 12px;
+  line-height: 18px;
+  width: 100%;
+  backdrop-filter: blur(400px);
+  text-align: start;
+  cursor: pointer;
+  border-style: dashed;
+  border-width: 1px;
+  opacity: 0.5;
+}
+
+.active-tag-boy {
+  background-color: var(--bf-accent);
+}
+.active-tag-girl {
+  background-color: var(--gf-accent);
+}

@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+:root {
+  /* =========================
+     COLORS
+  ========================= */
+
+  --background: #0b0b0f;
+  --background-secondary: #121218;
+
+  --surface: #17171f;
+  --surface-hover: #1f1f2a;
+
+  --card: #1b1b25;
+
+  --border: #2a2a38;
+
+  /* Brand */
+
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+
+  --secondary: #ec4899;
+  --secondary-hover: #db2777;
+
+  /* Character Colors */
+
+  --bf-primary: #60a5fa;
+  --bf-surface: #172033;
+  --bf-border: #2563eb;
+
+  --gf-primary: #f472b6;
+  --gf-surface: #31192b;
+  --gf-border: #ec4899;
+
+  /* Status */
+
+  --success: #22c55e;
+
+  --logic: #3b82f6;
+  --drama: #f97316;
+  --toxicity: #ef4444;
+  --chaos: #a855f7;
+
+  /* Text */
+
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  /* Layout */
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 8px;
+
+  --header-height: 72px;
+
+  /* Shadows */
+
+  --shadow-card: 0px 10px 40px rgba(0, 0, 0, 0.25);
+
+  --shadow-purple: 0px 0px 24px rgba(139, 92, 246, 0.25);
+
+  --shadow-pink: 0px 0px 24px rgba(236, 72, 153, 0.25);
+
+  --shadow-blue: 0px 0px 24px rgba(96, 165, 250, 0.25);
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+
+  font-family: Inter, system-ui, sans-serif;
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+
+.page-container {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(139, 92, 246, 0.1),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(236, 72, 153, 0.08),
+      transparent 35%
+    ),
+    var(--background);
+}
+/* 
+.header-container {
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(20px);
+
+  border-radius: var(--radius-lg);
+
+  padding: 0 24px;
+} */
+
+.game-layout {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns:
+    320px
+    minmax(0, 1fr)
+    320px;
+
+  gap: 24px;
+}
+
+.character-panel {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+}
+
+.arena-container {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+
+  min-height: 650px;
+}
+
+.bottom-panel {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    360px;
+
+  gap: 24px;
+}
+
+.chaos-panel {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+}
+
+.stats-panel {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+}
+
+/* =========================
+   REUSABLE CARDS
+========================= */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-card);
+}
+
+.card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-card);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-button {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+  color: white;
+
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 12px 20px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-purple);
+}
+
+.secondary-button {
+  background: transparent;
+
+  border: 1px solid var(--border);
+
+  color: var(--text-primary);
+
+  border-radius: 14px;
+
+  padding: 12px 20px;
+
+  cursor: pointer;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* =========================
+   GRADIENTS
+========================= */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: inherit;
+
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  pointer-events: none;
+}
+
+/* =========================
+   GLOWS
+========================= */
+
+.glow-purple {
+  box-shadow: var(--shadow-purple);
+}
+
+.glow-pink {
+  box-shadow: var(--shadow-pink);
+}
+
+.glow-blue {
+  box-shadow: var(--shadow-blue);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1200px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .character-panel {
+    display: none;
+  }
+
+  .bottom-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .arena-container {
+    min-height: 500px;
+  }
+}
