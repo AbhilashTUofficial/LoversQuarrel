@@ -1,0 +1,70 @@
+.player-panel {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.2s ease;
+  color: var(--text-primary);
+}
+
+.player-traits {
+  padding: 0 24px;
+  min-height: 0;
+}
+.traits {
+  display: flex;
+  flex-direction: column;
+}
+.trait {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  gap: 6px;
+  margin: 8px 0;
+}
+.trait-name {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-primary);
+  width: 70%;
+}
+
+.trait-value {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.trait-progress-bar {
+  width: 100%;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--text-muted);
+  height: 6px;
+  border-radius: 6px;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 6px;
+}
+.progress-boy {
+  background-color: var(--bf-primary);
+}
+.progress-girl {
+  background-color: var(--gf-primary);
+}
+.thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  cursor: pointer;
+}

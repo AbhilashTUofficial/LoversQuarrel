@@ -1,5 +1,6 @@
 import { Info, X } from 'lucide-react'
 import React from 'react'
+import './style.css'
 
 type Props = {
     isBoyfriend: boolean;

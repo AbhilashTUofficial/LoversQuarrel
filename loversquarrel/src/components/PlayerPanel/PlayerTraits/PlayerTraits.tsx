@@ -1,5 +1,6 @@
 import { Info } from 'lucide-react'
 import React from 'react'
+import './style.css'
 
 type Props = {
     traits: traits,

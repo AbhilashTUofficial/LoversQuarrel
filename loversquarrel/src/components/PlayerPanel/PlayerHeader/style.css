@@ -1,0 +1,91 @@
+.player-header-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px 6px 12px;
+  height: 10vh;
+}
+
+.avatar {
+  width: 100px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.name-tag {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.name {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  gap: 6px;
+}
+
+.boy-name {
+  color: var(--bf-primary);
+  text-shadow: 2px 2px 8px var(--bf-primary);
+}
+
+.girl-name {
+  color: var(--gf-secondary);
+  text-shadow: 2px 2px 8px var(--gf-secondary);
+}
+@keyframes online-indication {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.bulb {
+  position: absolute;
+  top: 34px;
+  right: 24px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin: 8px 22px;
+  animation: 0.3s ease-in-out infinite alternate online-indication;
+  transform-origin: center;
+}
+
+.bulb-boy {
+  background-color: var(--bf-primary);
+  box-shadow: 2px 2px 8px var(--bf-primary);
+}
+
+.bulb-girl {
+  background-color: var(--gf-secondary);
+  box-shadow: 2px 2px 8px var(--gf-secondary);
+}
+
+.mode {
+  padding: 4px 12px;
+  border-radius: 24px;
+  font-size: 12px;
+  line-height: 18px;
+  width: fit-content;
+  backdrop-filter: blur(400px);
+}
+
+.mode-girl {
+  background-color: var(--gf-accent);
+  box-shadow: 2px 2px 8px var(--gf-accent);
+}
+
+.mode-boy {
+  background-color: var(--bf-accent);
+  box-shadow: 2px 2px 8px var(--bf-accent);
+}

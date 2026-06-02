@@ -26,15 +26,15 @@ export default function Home() {
                 </aside>
             </section>
 
-            <footer className="bottom-panel">
+            <footer className="game-control-layout">
                 <section className="chaos-panel container  glass-card">
-                    <ChaosPanel />
+                    {/* <ChaosPanel /> */}
                 </section>
                 <section className="stats-panel container  glass-card">
-                    <Pause className="pause-icon" style={{ width: 180, height: 160 }} />
+                    {/* <Pause className="pause-icon" style={{ width: 180, height: 160 }} /> */}
                 </section>
                 <section className="stats-panel container  glass-card">
-                    <StatsPanel />
+                    {/* <StatsPanel /> */}
                 </section>
             </footer>
         </main>

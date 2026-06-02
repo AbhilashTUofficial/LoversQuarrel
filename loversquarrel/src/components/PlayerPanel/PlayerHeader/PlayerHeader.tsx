@@ -1,6 +1,6 @@
 import React from 'react'
-import boyfriend from '../../assets/boyfriend.png';
-import girlfriend from '../../assets/girlfriend.png';
+import boyfriend from '../../../assets/boyfriend.png';
+import girlfriend from '../../../assets/girlfriend.png';
 import './style.css'
 
 function PlayerHeader({ isBoyfriend, mode }: { isBoyfriend: boolean, mode: "Defensive" | "Offensive" | "Furious" }) {

@@ -1,13 +1,13 @@
 .header-container {
   display: flex;
   align-items: center;
-  gap: 12px;
   padding: 0 6px;
   justify-content: space-between;
+  /* display: none; */
 }
 
 .logo {
-  height: 50px;
+  height: 6vh;
 }
 
 .header-leading {
@@ -24,6 +24,6 @@
 .btn {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 0.8rem;
   gap: 6px;
 }

@@ -214,7 +214,7 @@ img {
   min-height: 650px;
 }
 
-.bottom-panel {
+.game-control-layout {
   display: grid;
 
   grid-template-columns:
@@ -391,7 +391,7 @@ img {
     display: none;
   }
 
-  .bottom-panel {
+  .game-control-layout {
     grid-template-columns: 1fr;
   }
 }

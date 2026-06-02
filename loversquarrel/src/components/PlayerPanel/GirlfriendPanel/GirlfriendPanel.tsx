@@ -1,8 +1,9 @@
 import React from 'react'
-import PlayerHeader from '../PlayerHeader'
+import PlayerHeader from '../PlayerHeader/PlayerHeader'
 import HorizontalDivider from '../../Divider/HorizontalDivider'
-import PlayerTraits from '../PlayerTraits'
-import ArgumentTags from '../ArgumentTags'
+import PlayerTraits from '../PlayerTraits/PlayerTraits'
+import ArgumentTags from '../ArgumentTags/ArgumentTags'
+import '../style.css';
 
 function GirlfriendPanel() {
 
@@ -10,12 +11,13 @@ function GirlfriendPanel() {
     const activeTags = ["Logical", "Dramatic", "Sarcasm", "Stubborn", "Confident"]
 
     return (
-        <div>
+        <div className='player-panel'>
             <PlayerHeader isBoyfriend={false} mode="Furious" />
             <HorizontalDivider />
-            <PlayerTraits traits={dummyGirlData} isBoyfriend={false} />
-            <ArgumentTags activeTags={activeTags} isBoyfriend={false} />
-
+            <div className='player-panel-content'>
+                <PlayerTraits traits={dummyGirlData} isBoyfriend={false} />
+                <ArgumentTags activeTags={activeTags} isBoyfriend={false} />
+            </div>
         </div>
     )
 }
