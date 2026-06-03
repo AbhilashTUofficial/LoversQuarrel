@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import React from 'react'
 
 type card = {
@@ -6,7 +7,7 @@ type card = {
     title: string
 }
 
-function ChaosCard(card: card) {
+export const ChaosCard = (card: card) => {
     return (
         <div className="card chaos-card">
             <img className="chaos-image" src={card.image} alt="" />
@@ -15,4 +16,12 @@ function ChaosCard(card: card) {
     )
 }
 
-export default ChaosCard
+export const AddChaosCard = () => {
+    return (
+        <div className="card chaos-card add-card">
+            <Plus style={{ width: 60, height: 60 }} />
+        </div>
+    )
+}
+
+

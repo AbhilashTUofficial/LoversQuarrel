@@ -2,10 +2,11 @@ import react from "react"
 import AppHeader from "../../components/AppBar/AppHeader/AppHeader";
 import BoyfriendPanel from "../../components/PlayerPanel/BoyfriendPanel/BoyfriendPanel";
 import GirlfriendPanel from "../../components/PlayerPanel/GirlfriendPanel/GirlfriendPanel";
-import ArgumentArena from "../../components/ArgumentArena";
+import ArgumentArena from "../../components/ArgumentAreana/ArgumentArena";
 import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
-import StatsPanel from "../../components/StatsPanel";
+import StatsPanel from "../../components/StatsPanel/StatsPanel";
 import { Pause } from "lucide-react";
+import StartButton from "../../components/StartButton/StartButton";
 
 export default function Home() {
     return (
@@ -13,28 +14,28 @@ export default function Home() {
             <AppHeader />
 
             <section className="game-layout">
-                <aside className="character-panel container  glass-card">
+                <aside className="container  glass-card">
                     <BoyfriendPanel />
                 </aside>
 
-                <section className="arena-container container  glass-card">
+                <section className="container  glass-card">
                     <ArgumentArena />
                 </section>
 
-                <aside className="character-panel container  glass-card">
+                <aside className="container  glass-card">
                     <GirlfriendPanel />
                 </aside>
             </section>
 
             <footer className="game-control-layout">
-                <section className="chaos-panel container  glass-card">
-                    {/* <ChaosPanel /> */}
+                <section className="container  glass-card">
+                    <ChaosPanel />
                 </section>
-                <section className="stats-panel container  glass-card">
-                    {/* <Pause className="pause-icon" style={{ width: 180, height: 160 }} /> */}
+                <section className="container">
+                    <StartButton />
                 </section>
-                <section className="stats-panel container  glass-card">
-                    {/* <StatsPanel /> */}
+                <section className="container  glass-card">
+                    <StatsPanel />
                 </section>
             </footer>
         </main>

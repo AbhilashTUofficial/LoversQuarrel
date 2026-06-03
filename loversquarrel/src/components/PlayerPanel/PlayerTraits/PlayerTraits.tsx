@@ -42,7 +42,7 @@ function PlayerTraits(props: Props) {
                             <div className="trait-name">{trait.name}</div>
                             <div className="trait-progress-bar">
                                 <div className="progress-container">
-                                    <div className={`progress ${props.isBoyfriend ? "progress-boy" : "progress-girl"}`} style={{ width: `${trait.value}%` }} />
+                                    <div className={`trait-progress ${props.isBoyfriend ? "progress-boy" : "progress-girl"}`} style={{ width: `${trait.value}%` }} />
                                     <div className="thumb" />
                                 </div>
                             </div>

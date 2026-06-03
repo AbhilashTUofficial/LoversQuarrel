@@ -104,10 +104,6 @@ img {
   max-width: 100%;
 }
 
-/* =========================
-   SCROLLBAR
-========================= */
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -125,14 +121,10 @@ img {
   background: var(--primary);
 }
 
-/* =========================
-   APP LAYOUT
-========================= */
-
 .page-container {
   display: grid;
   height: 100vh;
-  grid-template-rows: 10vh 70vh 20vh;
+  grid-template-rows: 10vh 69vh 5vh;
   /* gap: 24px; */
   /* padding: 24px; */
   background:
@@ -157,7 +149,7 @@ img {
 .game-layout {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  padding: 6px 16px;
+  padding: 0px 16px 6px 16px;
   gap: 8px;
 }
 
@@ -167,72 +159,21 @@ img {
   padding: 6px 16px;
   gap: 8px;
 }
-/* .character-panel {
-  background: var(--card);
-
-  border: 1px solid var(--border);
-
-  border-radius: var(--radius-lg);
-
-  overflow: hidden;
-} */
-
-/* .arena-container {
-  background: var(--card);
-
-  border: 1px solid var(--border);
-
-  border-radius: var(--radius-lg);
-
-  overflow: hidden;
-
-  min-height: 650px;
-} */
-
-/* 
-.chaos-panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-} */
-
-/* .stats-panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-} */
-
-/* =========================
-   REUSABLE CARDS
-========================= */
 
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
-
   backdrop-filter: blur(20px);
-
   border: 1px solid var(--border);
-
   border-radius: var(--radius-lg);
-
   box-shadow: var(--shadow-card);
 }
 
 .card {
   background: var(--card);
-
   border: 1px solid var(--border);
-
   border-radius: var(--radius-lg);
-
   box-shadow: var(--shadow-card);
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .primary-button {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -303,28 +244,18 @@ img {
 
 .gradient-border::before {
   content: "";
-
   position: absolute;
   inset: 0;
-
   padding: 1px;
-
   border-radius: inherit;
-
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
 
   -webkit-mask-composite: xor;
-
   pointer-events: none;
 }
-
-/* =========================
-   GLOWS
-========================= */
 
 .glow-purple {
   box-shadow: var(--shadow-purple);
@@ -338,19 +269,10 @@ img {
   box-shadow: var(--shadow-blue);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 1200px) {
   .game-layout {
     /* grid-template-columns: 1fr; */
   }
-
-  .character-panel {
-    display: none;
-  }
-
   .game-control-layout {
     /* grid-template-columns: 1fr; */
   }

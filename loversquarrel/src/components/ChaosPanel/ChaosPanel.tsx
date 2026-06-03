@@ -1,12 +1,12 @@
 import { Info } from 'lucide-react'
 import React from 'react'
 import './style.css'
-import oldIncident from "../../assets/images/chaos_img_1.png";
-import screenshotEvidence from "../../assets/images/chaos_img_2.png";
-import includeMom from "../../assets/images/chaos_img_3.png";
-import leaveOnRead from "../../assets/images/chaos_img_4.png";
-import callBestFriend from "../../assets/images/chaos_img_5.png";
-import ChaosCard from './ChaosCard';
+import oldIncident from "../../assets/images/chaos_img_01.png";
+import screenshotEvidence from "../../assets/images/chaos_img_02.png";
+import includeMom from "../../assets/images/chaos_img_03.png";
+import leaveOnRead from "../../assets/images/chaos_img_04.png";
+import callBestFriend from "../../assets/images/chaos_img_05.png";
+import { ChaosCard, AddChaosCard } from './ChaosCard';
 
 type chaosCard = {
     id: number,
@@ -18,12 +18,12 @@ function ChaosPanel() {
         {
             id: 1,
             image: oldIncident,
-            title: 'Bring Up Old Incident'
+            title: 'Old Incident'
         },
         {
             id: 2,
             image: screenshotEvidence,
-            title: 'Screenshot Evidence'
+            title: 'Evidence'
         },
         {
             id: 3,
@@ -38,7 +38,7 @@ function ChaosPanel() {
         {
             id: 5,
             image: callBestFriend,
-            title: 'Call Best Friend'
+            title: 'Best Friend'
         },
 
     ];
@@ -53,7 +53,7 @@ function ChaosPanel() {
                         <ChaosCard key={card.id} {...card} />
                     ))
                 }
-                <ChaosCard key={9} {...chaosCards[0]} />
+                <AddChaosCard />
             </div>
 
         </div>

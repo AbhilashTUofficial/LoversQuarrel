@@ -1,0 +1,142 @@
+.relationship-health-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
+  gap: 10px;
+  width: 100%;
+  height: 4vh;
+}
+.health-bar {
+  position: relative;
+  width: 200px;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.health-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+}
+.argument-arena {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  height: 48vh;
+  padding: 12px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.girlfriend-argument {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.boyfriend-argument {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.system-argument {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.argument {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  /* position: relative;
+  padding: 12px 16px;
+  border-radius: 16px;
+  width: fit-content;
+  margin-left: auto; */
+}
+
+/* .argument::before {
+  content: "";
+  position: absolute;
+  right: -8px;
+  bottom: 0;
+  width: 40px;
+  height: 16px;
+  background: #d9fdd3;
+  border-radius: 0 0 0 16px;
+}
+
+.argument::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  bottom: 0;
+  width: 12px;
+  height: 20px;
+  background: var(--surface);
+  border-radius: 0 0 0 12px;
+} */
+
+.girlfriend {
+  background-color: var(--gf-secondary);
+  border: 1px solid var(--gf-primary);
+  color: var(--text-primary);
+}
+.boyfriend {
+  background-color: var(--bf-secondary);
+  border: 1px solid var(--bg-primary);
+  color: var(--text-primary);
+}
+.system {
+  border: 1px dashed var(--border);
+  color: var(--text-primary);
+}
+
+.argument-container .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 12px;
+  /* border: 6px solid var(--surface); */
+}
+.argument-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.boy-message-tail {
+  left: 80px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--bf-secondary);
+}
+.chat-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 20px 6px 12px;
+  height: 9vh;
+}
+.chat-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
