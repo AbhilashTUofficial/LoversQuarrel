@@ -1,5 +1,4 @@
-import { HeartIcon, Info } from 'lucide-react'
-import React from 'react'
+import { HeartIcon } from 'lucide-react'
 import './style.css'
 import HorizontalDivider from '../Divider/HorizontalDivider'
 import boyfriend from '../../assets/boyfriend.png';

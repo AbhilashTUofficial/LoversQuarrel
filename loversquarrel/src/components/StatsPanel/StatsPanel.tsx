@@ -1,6 +1,4 @@
 import { Info } from 'lucide-react'
-import React from 'react'
-import { ChaosCard, AddChaosCard } from '../ChaosPanel/ChaosCard'
 import "./style.css"
 import LiveStat from './LiveStats/LiveStat';
 import relationshipIcon from "../../assets/images/stats_img_01.png";

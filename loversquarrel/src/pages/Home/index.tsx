@@ -1,11 +1,9 @@
-import react from "react"
 import AppHeader from "../../components/AppBar/AppHeader/AppHeader";
 import BoyfriendPanel from "../../components/PlayerPanel/BoyfriendPanel/BoyfriendPanel";
 import GirlfriendPanel from "../../components/PlayerPanel/GirlfriendPanel/GirlfriendPanel";
 import ArgumentArena from "../../components/ArgumentAreana/ArgumentArena";
 import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
 import StatsPanel from "../../components/StatsPanel/StatsPanel";
-import { Pause } from "lucide-react";
 import StartButton from "../../components/StartButton/StartButton";
 
 export default function Home() {

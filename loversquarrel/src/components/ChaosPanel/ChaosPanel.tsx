@@ -1,5 +1,4 @@
 import { Info } from 'lucide-react'
-import React from 'react'
 import './style.css'
 import oldIncident from "../../assets/images/chaos_img_01.png";
 import screenshotEvidence from "../../assets/images/chaos_img_02.png";

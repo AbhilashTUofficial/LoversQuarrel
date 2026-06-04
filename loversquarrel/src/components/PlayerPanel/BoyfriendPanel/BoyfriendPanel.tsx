@@ -1,4 +1,3 @@
-import React from 'react'
 import PlayerHeader from '../PlayerHeader/PlayerHeader'
 import HorizontalDivider from '../../Divider/HorizontalDivider'
 import PlayerTraits from '../PlayerTraits/PlayerTraits'
