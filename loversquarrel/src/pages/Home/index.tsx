@@ -1,41 +1,34 @@
-import AppHeader from "../../components/AppBar/AppHeader/AppHeader";
-import BoyfriendPanel from "../../components/PlayerPanel/BoyfriendPanel/BoyfriendPanel";
-import GirlfriendPanel from "../../components/PlayerPanel/GirlfriendPanel/GirlfriendPanel";
-import ArgumentArena from "../../components/ArgumentAreana/ArgumentArena";
-import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
-import StatsPanel from "../../components/StatsPanel/StatsPanel";
-import StartButton from "../../components/StartButton/StartButton";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setUserToken } from '../../redux/userSlice';
+import './style.css'
+function Home() {
 
-export default function Home() {
+    const userData = useSelector((state: any) => state.user)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const onClickBoyfriend = () => {
+        dispatch(setUserToken('boyfriend'));
+        navigate('/game')
+    }
+
+    const onClickGirlfriend = () => {
+        dispatch(setUserToken('girlfriend'));
+        navigate('/game')
+    }
+
     return (
-        <main className="page-container">
-            <AppHeader />
-
-            <section className="game-layout">
-                <aside className="container  glass-card">
-                    <BoyfriendPanel />
-                </aside>
-
-                <section className="container  glass-card">
-                    <ArgumentArena />
-                </section>
-
-                <aside className="container  glass-card">
-                    <GirlfriendPanel />
-                </aside>
-            </section>
-
-            <footer className="game-control-layout">
-                <section className="container  glass-card">
-                    <ChaosPanel />
-                </section>
-                <section className="container">
-                    <StartButton />
-                </section>
-                <section className="container  glass-card">
-                    <StatsPanel />
-                </section>
-            </footer>
-        </main>
-    );
+        <div className='page-container home'>
+            <div className="choose-user-type-container glass-card">
+                <div className="choose-user-type">Choose User Type</div>
+                <div className="user-type-btn-container">
+                    <button className="user-type-btn boyfriend-btn" onClick={onClickBoyfriend}>Boyfriend</button>
+                    <button className="user-type-btn girlfriend-btn" onClick={onClickGirlfriend}>Girlfriend</button>
+                </div>
+            </div>
+        </div>
+    )
 }
+
+export default Home

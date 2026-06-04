@@ -1,0 +1,54 @@
+.page-container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 10vh 69vh 5vh;
+}
+
+.choose-user-type-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+  width: 400px;
+  height: 400px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.choose-user-type {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.user-type-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.user-type-btn {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.boyfriend-btn {
+  background: linear-gradient(135deg, var(--bf-primary), var(--bf-secondary));
+}
+.girlfriend-btn {
+  background: linear-gradient(135deg, var(--gf-primary), var(--gf-secondary));
+}

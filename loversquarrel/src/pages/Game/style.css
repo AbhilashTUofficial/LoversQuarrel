@@ -122,11 +122,6 @@ img {
 }
 
 .page-container {
-  display: grid;
-  height: 100vh;
-  grid-template-rows: 10vh 69vh 5vh;
-  /* gap: 24px; */
-  /* padding: 24px; */
   background:
     radial-gradient(
       circle at top left,
@@ -142,22 +137,12 @@ img {
 }
 
 .header-container {
-  align-items: center;
-  padding: 0 6px;
 }
 
 .game-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  padding: 0px 16px 6px 16px;
-  gap: 8px;
 }
 
 .game-control-layout {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  padding: 6px 16px;
-  gap: 8px;
 }
 
 .glass-card {
@@ -269,22 +254,6 @@ img {
   box-shadow: var(--shadow-blue);
 }
 
-@media (max-width: 1200px) {
-  .game-layout {
-    /* grid-template-columns: 1fr; */
-  }
-  .game-control-layout {
-    /* grid-template-columns: 1fr; */
-  }
-}
-
-@media (max-width: 768px) {
-  .page-container {
-    padding: 16px;
-    gap: 16px;
-  }
-}
-
 .subtitle {
   color: var(--text-secondary);
   font-size: 14px;
@@ -297,53 +266,4 @@ img {
 .info-icon {
   width: 16px;
   height: 16px;
-}
-
-.choose-user-type-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 16px;
-  width: 400px;
-  height: 400px;
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-
-.choose-user-type {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.user-type-btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-}
-
-.user-type-btn {
-  width: 100px;
-  height: 40px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-}
-
-.boyfriend-btn {
-  background: linear-gradient(135deg, var(--bf-primary), var(--bf-secondary));
-}
-.girlfriend-btn {
-  background: linear-gradient(135deg, var(--gf-primary), var(--gf-secondary));
 }
