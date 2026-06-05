@@ -1,9 +1,11 @@
-
+import styles from "./style.module.css";
 
 function HorizontalDivider() {
     return (
-        <div className='horizontal-divider divider'></div>
-    )
+        <div
+            className={`${styles.horizontalDivider} ${styles.divider}`}
+        ></div>
+    );
 }
 
-export default HorizontalDivider
+export default HorizontalDivider;

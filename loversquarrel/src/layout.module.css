@@ -1,0 +1,80 @@
+.pageContainer {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 10vh 69vh 5vh;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gameLayout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "boyfriendPanel argumentArena girlfriendPanel";
+}
+.boyfriendPanel {
+  grid-area: boyfriendPanel;
+}
+.girlfriendPanel {
+  grid-area: girlfriendPanel;
+}
+.argumentArena {
+  grid-area: argumentArena;
+}
+
+@media (max-width: 1000px) {
+  .gameLayout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "argumentArena argumentArena"
+      " boyfriendPanel girlfriendPanel";
+  }
+}
+@media (max-width: 600px) {
+  .gameLayout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "argumentArena"
+      " boyfriendPanel"
+      " girlfriendPanel";
+  }
+}
+
+.gameControlLayout {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: "chaosPanel startButton statsPanel";
+}
+
+.chaosPanel {
+  grid-area: chaosPanel;
+}
+.startButton {
+  grid-area: startButton;
+}
+.statsPanel {
+  grid-area: statsPanel;
+}
+
+@media (max-width: 1600px) {
+  .gameControlLayout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "startButton"
+      "statsPanel"
+      "chaosPanel";
+  }
+}
+
+.playerPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.playerPanelContent {
+  height: 54vh;
+  overflow-y: auto;
+}

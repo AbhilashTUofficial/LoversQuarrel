@@ -5,36 +5,35 @@ import ArgumentArena from "../../components/ArgumentAreana/ArgumentArena";
 import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
 import StatsPanel from "../../components/StatsPanel/StatsPanel";
 import StartButton from "../../components/StartButton/StartButton";
-import "./style.css";
-import "./layout.css";
-
+import style from "./style.module.css";
+import layoutStyle from "../../layout.module.css";
 export default function Game() {
     return (
-        <main className="page-container">
+        <main className={style.pageContainer}>
             <AppHeader />
 
-            <section className="game-layout">
-                <aside className="container  glass-card">
+            <section className={`${style.gameLayout} ${layoutStyle.gameLayout}`}>
+                <aside className={[style.glassCard, layoutStyle.boyfriendPanel].join(' ')}>
                     <BoyfriendPanel />
                 </aside>
 
-                <section className="container  glass-card">
+                <section className={[style.glassCard, layoutStyle.argumentArena].join(' ')}>
                     <ArgumentArena />
                 </section>
 
-                <aside className="container  glass-card">
+                <aside className={[style.glassCard, layoutStyle.girlfriendPanel].join(' ')}>
                     <GirlfriendPanel />
                 </aside>
             </section>
 
-            <footer className="game-control-layout">
-                <section className="container  glass-card">
+            <footer className={`${style.gameControlLayout} ${layoutStyle.gameControlLayout}`}>
+                <section className={[style.container, style.glassCard].join(' ')}>
                     <ChaosPanel />
                 </section>
-                <section className="container">
+                <section className={style.container}>
                     <StartButton />
                 </section>
-                <section className="container  glass-card">
+                <section className={[style.container, style.glassCard].join(' ')}>
                     <StatsPanel />
                 </section>
             </footer>

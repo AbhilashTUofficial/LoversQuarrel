@@ -1,15 +1,18 @@
-import './style.css'
-import { SquarePen } from 'lucide-react';
+import styles from "./style.module.css";
+import baseStyle from "../../../base.module.css";
+
+import { SquarePen } from "lucide-react";
 
 function CaseCard() {
     return (
-        <div className=' case-card glass-card'>
+        <div className={`${styles.caseCard} ${baseStyle.glassCard}`}>
+            <div className={styles.caseNumber}>CASE #432432</div>
 
-            <div className="case-number">CASE #432432</div>
-            <div className="case-name">Whay didn't you reply?</div>
-            <SquarePen className='edit-icon' />
+            <div className={styles.caseName}>Whay didn't you reply?</div>
+
+            <SquarePen className={styles.editIcon} />
         </div>
-    )
+    );
 }
 
-export default CaseCard
+export default CaseCard;

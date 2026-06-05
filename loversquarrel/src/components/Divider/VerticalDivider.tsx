@@ -1,8 +1,11 @@
-import './style.css'
+import styles from "./style.module.css";
+
 function VerticalDivider() {
     return (
-        <div className='vertical-divider divider'></div>
-    )
+        <div
+            className={`${styles.verticalDivider} ${styles.divider}`}
+        ></div>
+    );
 }
 
-export default VerticalDivider
+export default VerticalDivider;

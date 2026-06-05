@@ -1,10 +1,10 @@
-.page-container {
+.pageContainer {
   display: grid;
   height: 100vh;
   grid-template-rows: 10vh 69vh 5vh;
 }
 
-.choose-user-type-container {
+.chooseUserTypeContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,12 +22,12 @@
   gap: 16px;
 }
 
-.choose-user-type {
+.chooseUserType {
   font-size: 24px;
   font-weight: 600;
 }
 
-.user-type-btn-container {
+.userTypeBtnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.user-type-btn {
+.userTypeBtn {
   width: 100px;
   height: 40px;
   font-size: 16px;
@@ -46,9 +46,9 @@
   color: var(--text-primary);
 }
 
-.boyfriend-btn {
+.boyfriendBtn {
   background: linear-gradient(135deg, var(--bf-primary), var(--bf-secondary));
 }
-.girlfriend-btn {
+.girlfriendBtn {
   background: linear-gradient(135deg, var(--gf-primary), var(--gf-secondary));
 }

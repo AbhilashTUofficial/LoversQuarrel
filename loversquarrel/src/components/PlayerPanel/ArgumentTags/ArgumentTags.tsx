@@ -1,28 +1,41 @@
-import { Info, X } from 'lucide-react'
-import './style.css'
+import styles from "./style.module.css";
+import baseStyle from "../../../base.module.css";
+
+import { Info, X } from "lucide-react";
 
 type Props = {
     isBoyfriend: boolean;
     activeTags: String[];
-}
+};
+
 function ArgumentTags(props: Props) {
     return (
-        <div className='active-tag-container'>
-            <div className="subtitle">ACTIVE TAGS
-                <Info className={"info-icon"} />
+        <div className={styles.activeTagContainer}>
+            <div className={baseStyle.subtitle}>
+                ACTIVE TAGS
+
+                <Info className={baseStyle.infoIcon} />
             </div>
-            <div className="tags">
-                {
-                    props.activeTags.map((tag, index) => (
-                        <div key={index} className={`active-tag ${props.isBoyfriend ? "active-tag-boy" : "active-tag-girl"}`}>{tag}
-                            <X className="close-icon" />
-                        </div>
-                    ))
-                }
-                <div className="add-new-tag">+ Add Tag</div>
+
+            <div className={styles.tags}>
+                {props.activeTags.map((tag, index) => (
+                    <div
+                        key={index}
+                        className={`${styles.activeTag} ${props.isBoyfriend
+                            ? styles.activeTagBoy
+                            : styles.activeTagGirl
+                            }`}
+                    >
+                        {tag}
+
+                        <X className={styles.closeIcon} />
+                    </div>
+                ))}
+
+                <div className={styles.addNewTag}>+ Add Tag</div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ArgumentTags
+export default ArgumentTags;

@@ -1,14 +1,17 @@
-.chaos-panel {
+.chaosPanel {
   display: flex;
   flex-direction: column;
   padding: 12px;
 }
-.chaos-cards {
-  display: flex;
+
+.chaosCards {
+  display: grid;
   gap: 12px;
   margin-top: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
-.chaos-card {
+
+.chaosCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,30 +23,35 @@
   height: 12vh;
   width: 100%;
 }
-.chaos-image {
+
+.chaosImage {
   top: 36px;
   object-fit: cover;
   width: 60px;
   height: 60px;
 }
-.chaos-card .subtitle {
+
+.chaosCard .subtitle {
   font-size: 12px;
   color: var(--text-primary);
   line-height: 1.2;
 }
-.chaos-card:hover {
+
+.chaosCard:hover {
   border-color: var(--gf-secondary);
   color: var(--gf-secondary);
   cursor: pointer;
   transition: 0.2s ease;
 }
-.add-card {
+
+.addCard {
   font-size: 124px;
   text-align: center;
   color: var(--text-secondary);
   border: 2px dashed var(--border);
 }
-.add-card:hover {
+
+.addCard:hover {
   color: var(--gf-secondary);
   border-color: var(--gf-secondary);
   cursor: pointer;

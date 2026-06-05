@@ -1,4 +1,4 @@
-.relationship-health-container {
+.relationshipHealthContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,7 +8,8 @@
   width: 100%;
   height: 4vh;
 }
-.health-bar {
+
+.healthBar {
   position: relative;
   width: 200px;
   height: 6px;
@@ -16,7 +17,8 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.health-progress {
+
+.healthProgress {
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +26,8 @@
   background-color: #4caf50;
   border-radius: 10px;
 }
-.argument-arena {
+
+.argumentArena {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -35,24 +38,27 @@
   scrollbar-width: none;
 }
 
-.girlfriend-argument {
+.girlfriendArgument {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
 }
-.boyfriend-argument {
+
+.boyfriendArgument {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.system-argument {
+
+.systemArgument {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
+
 .argument {
   display: flex;
   flex-direction: column;
@@ -96,35 +102,40 @@
   border: 1px solid var(--gf-primary);
   color: var(--text-primary);
 }
+
 .boyfriend {
   background-color: var(--bf-secondary);
   border: 1px solid var(--bg-primary);
   color: var(--text-primary);
 }
+
 .system {
   border: 1px dashed var(--border);
   color: var(--text-primary);
 }
 
-.argument-container .avatar {
+.argumentContainer .avatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   margin: 12px;
   /* border: 6px solid var(--surface); */
 }
-.argument-container {
+
+.argumentContainer {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
-.boy-message-tail {
+
+.boyMessageTail {
   left: 80px;
   width: 20px;
   height: 20px;
   background-color: var(--bf-secondary);
 }
-.chat-input-container {
+
+.chatInputContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -133,7 +144,8 @@
   padding: 12px 20px 6px 12px;
   height: 9vh;
 }
-.chat-input {
+
+.chatInput {
   display: flex;
   flex-direction: row;
   align-items: center;

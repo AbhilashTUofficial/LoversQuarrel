@@ -1,9 +1,9 @@
-.vertical-divider {
+.verticalDivider {
   width: 2px;
   margin: 0 12px;
 }
 
-.horizontal-divider {
+.horizontalDivider {
   height: 2px;
   margin: 12px 20px;
 }

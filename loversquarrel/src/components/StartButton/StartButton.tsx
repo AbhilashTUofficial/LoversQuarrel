@@ -1,13 +1,13 @@
-import './style.css'
+import styles from "./style.module.css";
 
 function StartButton() {
     return (
-        <div className="play-btn-container">
-            <button className="play-button">
-                <span className="play-icon" />
+        <div className={styles.playBtnContainer}>
+            <button className={styles.playButton}>
+                <span className={styles.playIcon} />
             </button>
         </div>
-    )
+    );
 }
 
-export default StartButton
+export default StartButton;

@@ -50,7 +50,7 @@
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
 
-  /* Layout */
+  /* Radius */
 
   --radius-sm: 12px;
   --radius-md: 18px;
@@ -121,7 +121,11 @@ img {
   background: var(--primary);
 }
 
-.page-container {
+/* =========================
+   PAGE
+========================= */
+
+.pageContainer {
   background:
     radial-gradient(
       circle at top left,
@@ -136,16 +140,45 @@ img {
     var(--background);
 }
 
-.header-container {
+.headerContainer {
+  align-items: center;
+  padding: 16px;
 }
 
-.game-layout {
+.gameLayout {
+  padding: 0 16px 6px;
+  gap: 8px;
 }
 
-.game-control-layout {
+.gameControlLayout {
+  padding: 6px 16px;
+  gap: 8px;
 }
 
-.glass-card {
+.playerPanel {
+  gap: 12px;
+}
+
+.playerPanelContent {
+  padding-right: 4px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.glassCard {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border);
@@ -160,29 +193,29 @@ img {
   box-shadow: var(--shadow-card);
 }
 
-.primary-button {
+/* =========================
+   BUTTONS
+========================= */
+
+.primaryButton {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 
   color: white;
-
   border: none;
-
   border-radius: 14px;
 
   padding: 12px 20px;
 
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
-.primary-button:hover {
+.primaryButton:hover {
   transform: translateY(-2px);
-
   box-shadow: var(--shadow-purple);
 }
 
-.secondary-button {
+.secondaryButton {
   background: transparent;
 
   border: 1px solid var(--border);
@@ -200,58 +233,16 @@ img {
    TEXT
 ========================= */
 
-.text-primary {
+.textPrimary {
   color: var(--text-primary);
 }
 
-.text-secondary {
+.textSecondary {
   color: var(--text-secondary);
 }
 
-.text-muted {
+.textMuted {
   color: var(--text-muted);
-}
-
-/* =========================
-   GRADIENTS
-========================= */
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-
-  -webkit-mask-composite: xor;
-  pointer-events: none;
-}
-
-.glow-purple {
-  box-shadow: var(--shadow-purple);
-}
-
-.glow-pink {
-  box-shadow: var(--shadow-pink);
-}
-
-.glow-blue {
-  box-shadow: var(--shadow-blue);
 }
 
 .subtitle {
@@ -259,11 +250,59 @@ img {
   font-size: 14px;
   line-height: 16px;
   font-weight: 600;
+
   display: flex;
   gap: 6px;
 }
 
-.info-icon {
+.infoIcon {
   width: 16px;
   height: 16px;
+}
+
+/* =========================
+   EFFECTS
+========================= */
+
+.gradientText {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientBorder {
+  position: relative;
+}
+
+.gradientBorder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: inherit;
+
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  pointer-events: none;
+}
+
+.glowPurple {
+  box-shadow: var(--shadow-purple);
+}
+
+.glowPink {
+  box-shadow: var(--shadow-pink);
+}
+
+.glowBlue {
+  box-shadow: var(--shadow-blue);
 }

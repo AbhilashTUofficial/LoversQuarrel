@@ -1,24 +1,26 @@
-.player-panel {
+.playerPanel {
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.info-icon:hover {
+.infoIcon:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: 0.2s ease;
   color: var(--text-primary);
 }
 
-.player-traits {
+.playerTraits {
   padding: 0 24px;
   min-height: 0;
 }
+
 .traits {
   display: flex;
   flex-direction: column;
 }
+
 .trait {
   display: flex;
   align-items: center;
@@ -26,24 +28,25 @@
   gap: 6px;
   margin: 8px 0;
 }
-.trait-name {
+
+.traitName {
   font-size: 14px;
   line-height: 18px;
   color: var(--text-primary);
   width: 70%;
 }
 
-.trait-value {
+.traitValue {
   font-size: 14px;
   line-height: 18px;
   color: var(--text-secondary);
 }
 
-.trait-progress-bar {
+.traitProgressBar {
   width: 100%;
 }
 
-.progress-container {
+.progressContainer {
   display: flex;
   align-items: center;
   background-color: var(--text-muted);
@@ -51,16 +54,19 @@
   border-radius: 6px;
 }
 
-.trait-progress {
+.traitProgress {
   height: 6px;
   border-radius: 6px;
 }
-.progress-boy {
+
+.progressBoy {
   background-color: var(--bf-primary);
 }
-.progress-girl {
+
+.progressGirl {
   background-color: var(--gf-primary);
 }
+
 .thumb {
   width: 16px;
   height: 16px;

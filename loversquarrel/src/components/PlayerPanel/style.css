@@ -1,6 +1,6 @@
-.player-panel {
+.playerPanel {
 }
-.player-panel-content {
+.playerPanelContent {
   height: 54vh;
   overflow-y: auto;
 }

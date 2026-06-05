@@ -1,35 +1,42 @@
-import './style.css'
+import styles from "./style.module.css";
+import baseStyle from "../../../base.module.css";
+import LayoutStyle from "../../../layout.module.css";
 import logo from "../../../assets/logo.png";
-import VerticalDivider from '../../Divider/VerticalDivider';
-import CaseCard from '../CaseCard/CaseCard';
-import RoundsCard from '../RoundsCard/RoundsCard';
-import { Astroid, MoonStar, Settings, Share2 } from 'lucide-react';
+import VerticalDivider from "../../Divider/VerticalDivider";
+import CaseCard from "../CaseCard/CaseCard";
+import RoundsCard from "../RoundsCard/RoundsCard";
+import { Astroid, MoonStar, Settings, Share2 } from "lucide-react";
 
 function AppHeader() {
     return (
-        <div className='header-container'>
-            <div className='header-leading'>
-                <img className='logo' src={logo} alt="" />
+        <div className={`${baseStyle.headerContainer} ${LayoutStyle.headerContainer}`}>
+            <div className={styles.headerLeading}>
+                <img className={styles.logo} src={logo} alt="" />
                 <VerticalDivider />
                 <CaseCard />
             </div>
+
             <RoundsCard />
-            <div className="header-trailing">
-                <div className="btn glass-card mode-btn">
+
+            <div className={styles.headerTrailing}>
+                <div className={`${styles.btn} ${baseStyle.glassCard} ${baseStyle.modeBtn}`}>
                     <Astroid /> AI Mode
                 </div>
-                <div className="btn glass-card share-btn">
+
+                <div className={`${styles.btn} ${baseStyle.glassCard} ${baseStyle.shareBtn}`}>
                     <Share2 /> Share
                 </div>
-                <div className="btn glass-card theme-btn">
+
+                <div className={`${styles.btn} ${baseStyle.glassCard} ${baseStyle.themeBtn}`}>
                     <MoonStar />
                 </div>
-                <div className="btn glass-card settings-btn">
+
+                <div className={`${styles.btn} ${baseStyle.glassCard} ${baseStyle.settingsBtn}`}>
                     <Settings />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default AppHeader
+export default AppHeader;

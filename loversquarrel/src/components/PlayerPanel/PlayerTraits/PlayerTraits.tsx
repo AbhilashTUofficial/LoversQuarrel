@@ -1,23 +1,24 @@
-import { Info } from 'lucide-react'
-import './style.css'
+import styles from "./style.module.css";
+
+import { Info } from "lucide-react";
 
 type Props = {
-    traits: traits,
-    isBoyfriend: boolean
-}
+    traits: traits;
+    isBoyfriend: boolean;
+};
 
 type traits = {
-    intellect: number,
-    logic: number,
-    drama: number,
-    sarcasm: number,
-    stubborness: number,
-    confidence: number,
-    memory: number,
-    empathy: number
-}
-function PlayerTraits(props: Props) {
+    intellect: number;
+    logic: number;
+    drama: number;
+    sarcasm: number;
+    stubborness: number;
+    confidence: number;
+    memory: number;
+    empathy: number;
+};
 
+function PlayerTraits(props: Props) {
     const traits = [
         { name: "🧠 Intellect", value: props.traits.intellect },
         { name: "⚖️ Logic", value: props.traits.logic },
@@ -27,31 +28,48 @@ function PlayerTraits(props: Props) {
         { name: "💪 Confidence", value: props.traits.confidence },
         { name: "🗒️ Memory", value: props.traits.memory },
         { name: "💔 Empathy", value: props.traits.empathy },
-    ]
+    ];
 
     return (
-        <div className="player-traits">
-            <div className="subtitle">TRAITS
-                <Info className={"info-icon"} />
+        <div className={styles.playerTraits}>
+            <div className={styles.subtitle}>
+                TRAITS
+
+                <Info className={styles.infoIcon} />
             </div>
-            <div className="traits" >
-                {
-                    traits.map((trait, index) => (
-                        <div key={index} className="trait">
-                            <div className="trait-name">{trait.name}</div>
-                            <div className="trait-progress-bar">
-                                <div className="progress-container">
-                                    <div className={`trait-progress ${props.isBoyfriend ? "progress-boy" : "progress-girl"}`} style={{ width: `${trait.value}%` }} />
-                                    <div className="thumb" />
-                                </div>
-                            </div>
-                            <div className="trait-value">{trait.value}</div>
+
+            <div className={styles.traits}>
+                {traits.map((trait, index) => (
+                    <div
+                        key={index}
+                        className={styles.trait}
+                    >
+                        <div className={styles.traitName}>
+                            {trait.name}
                         </div>
-                    ))
-                }
+
+                        <div className={styles.traitProgressBar}>
+                            <div className={styles.progressContainer}>
+                                <div
+                                    className={`${styles.traitProgress} ${props.isBoyfriend
+                                            ? styles.progressBoy
+                                            : styles.progressGirl
+                                        }`}
+                                    style={{ width: `${trait.value}%` }}
+                                />
+
+                                <div className={styles.thumb} />
+                            </div>
+                        </div>
+
+                        <div className={styles.traitValue}>
+                            {trait.value}
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div >
-    )
+        </div>
+    );
 }
 
-export default PlayerTraits
+export default PlayerTraits;

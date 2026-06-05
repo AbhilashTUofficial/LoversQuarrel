@@ -1,31 +1,64 @@
-import boyfriend from '../../../assets/boyfriend.png';
-import girlfriend from '../../../assets/girlfriend.png';
-import './style.css'
+import styles from "./style.module.css";
 
-function PlayerHeader({ isBoyfriend, mode }: { isBoyfriend: boolean, mode: "Defensive" | "Offensive" | "Furious" }) {
-    return (
-        isBoyfriend ?
-            <div className="player-header-container">
-                <img src={boyfriend} className="avatar" alt="" />
+import boyfriend from "../../../assets/boyfriend.png";
+import girlfriend from "../../../assets/girlfriend.png";
 
-                <div className="name-tag">
-                    <div className="name boy-name">Boyfriend
-                        <div className="bulb bulb-boy"></div>
-                    </div>
-                    <div className="mode mode-boy">{mode}</div>
+function PlayerHeader({
+    isBoyfriend,
+    mode,
+}: {
+    isBoyfriend: boolean;
+    mode: "Defensive" | "Offensive" | "Furious";
+}) {
+    return isBoyfriend ? (
+        <div className={styles.playerHeaderContainer}>
+            <img
+                src={boyfriend}
+                className={styles.avatar}
+                alt=""
+            />
+
+            <div className={styles.nameTag}>
+                <div className={`${styles.name} ${styles.boyName}`}>
+                    Boyfriend
+
+                    <div
+                        className={`${styles.bulb} ${styles.bulbBoy}`}
+                    ></div>
                 </div>
-            </div> :
-            <div className="player-header-container">
-                <img src={girlfriend} className="avatar" alt="" />
 
-                <div className="name-tag">
-                    <div className="name girl-name">Girlfriend
-                        <div className="bulb bulb-girl"></div>
-                    </div>
-                    <div className="mode mode-girl">{mode}</div>
+                <div
+                    className={`${styles.mode} ${styles.modeBoy}`}
+                >
+                    {mode}
                 </div>
             </div>
-    )
+        </div>
+    ) : (
+        <div className={styles.playerHeaderContainer}>
+            <img
+                src={girlfriend}
+                className={styles.avatar}
+                alt=""
+            />
+
+            <div className={styles.nameTag}>
+                <div className={`${styles.name} ${styles.girlName}`}>
+                    Girlfriend
+
+                    <div
+                        className={`${styles.bulb} ${styles.bulbGirl}`}
+                    ></div>
+                </div>
+
+                <div
+                    className={`${styles.mode} ${styles.modeGirl}`}
+                >
+                    {mode}
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default PlayerHeader
+export default PlayerHeader;

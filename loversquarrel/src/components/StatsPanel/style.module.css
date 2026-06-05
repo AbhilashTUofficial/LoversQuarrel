@@ -1,14 +1,17 @@
-.live-stats-panel {
+.liveStatsPanel {
   display: flex;
   flex-direction: column;
   padding: 12px;
 }
-.live-stats-cards {
-  display: flex;
-  /* gap: 12px; */
+
+.liveStatsCards {
+  display: grid;
+  gap: 12px;
   margin-top: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
-.live-stats-card {
+
+.liveStatsCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,40 +23,46 @@
   height: 12vh;
   width: 100%;
 }
-.live-stats-card div {
+
+.liveStatsCard div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.live-stats-image {
+
+.liveStatsImage {
   /* top: 36px; */
   object-fit: cover;
   width: 50px;
   height: 50px;
 }
-.live-stats-card .subtitle {
+
+.liveStatsCard .subtitle {
   font-size: 12px;
   color: var(--text-primary);
 }
-.live-stats-card:hover {
+
+.liveStatsCard:hover {
   border-color: var(--bf-secondary);
   color: var(--bf-secondary);
   cursor: pointer;
   transition: 0.2s ease;
 }
-.progress-value {
+
+.progressValue {
   font-size: 18px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.progress-bar {
+.progressBar {
   width: 100px;
   height: 8px;
   border-radius: 4px;
   overflow: hidden;
   background-color: var(--border);
 }
+
 .progress {
   height: 100%;
   background-color: var(--bf-secondary);

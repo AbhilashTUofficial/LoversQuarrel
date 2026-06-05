@@ -1,11 +1,12 @@
-.play-btn-container {
+.playBtnContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 0 16px;
 }
-.play-button {
+
+.playButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,9 +37,24 @@
     0 0 40px var(--gf-accent);
 
   transition: all 0.25s ease;
+
+  animation: pulseGlow 2.5s infinite;
 }
 
-.play-button:hover {
+@media (max-width: 1600px) {
+  .playButton {
+    width: 100%;
+    border-radius: 6px;
+    padding: 0px;
+  }
+  .playBtnContainer {
+    padding: 0px;
+  }
+  .playButton:hover {
+    transform: none;
+  }
+}
+.playButton:hover {
   transform: scale(1.06);
 
   box-shadow:
@@ -46,11 +62,11 @@
     0 0 60px var(--gf-accent);
 }
 
-.play-button:active {
+.playButton:active {
   transform: scale(0.98);
 }
 
-.play-icon {
+.playIcon {
   width: 0;
   height: 0;
 
@@ -59,10 +75,6 @@
   border-left: 20px solid white;
 
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
-}
-
-.play-button {
-  animation: pulseGlow 2.5s infinite;
 }
 
 @keyframes pulseGlow {

@@ -1,14 +1,16 @@
-import './style.css'
+import styles from "./style.module.css";
+import baseStyle from "../../../base.module.css";
 
 function RoundsCard() {
     return (
-        <div className='glass-card rounds-card'>
-            <div className="rounds-number">ROUND 7</div>
-            <div className="rounds-subtitle">
+        <div className={`${baseStyle.glassCard} ${styles.roundsCard}`}>
+            <div className={styles.roundsNumber}>ROUND 7</div>
+
+            <div className={styles.roundsSubtitle}>
                 Heated 🔥
             </div>
         </div>
-    )
+    );
 }
 
-export default RoundsCard
+export default RoundsCard;
