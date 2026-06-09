@@ -5,6 +5,8 @@ import { HeartIcon } from "lucide-react";
 import HorizontalDivider from "../Divider/HorizontalDivider";
 import boyfriend from "../../assets/boyfriend.png";
 import girlfriend from "../../assets/girlfriend.png";
+import ArgumentInput from "./ArgumentInput/ArgumentInput";
+import { useState } from "react";
 
 type Argument = {
     id: number;
@@ -14,57 +16,69 @@ type Argument = {
 };
 
 function ArgumentArena() {
-    const argumentsList: Argument[] = [
-        {
-            id: 0,
-            from: "system",
-            content:
-                "System: The couple started a conversation about their relationship.",
-            timestamp: new Date(),
-        },
-        {
-            id: 1,
-            from: "girlfriend",
-            content:
-                "Hello, I'm girlfriend. I'm glad to see you again today. I hope you have a good day. How about a cup of coffee? I'll be waiting for you there.",
-            timestamp: new Date(),
-        },
-        {
-            id: 2,
+    const [argumentStack, setArgumentStack] = useState<Argument[]>(
+        [
+            {
+                id: 0,
+                from: "system",
+                content:
+                    "System: The couple started a conversation about their relationship.",
+                timestamp: new Date(),
+            },
+            {
+                id: 1,
+                from: "girlfriend",
+                content:
+                    "Hello, I'm girlfriend. I'm glad to see you again today. I hope you have a good day. How about a cup of coffee? I'll be waiting for you there.",
+                timestamp: new Date(),
+            },
+            {
+                id: 2,
+                from: "boyfriend",
+                content:
+                    "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
+                timestamp: new Date(),
+            },
+            {
+                id: 3,
+                from: "system",
+                content:
+                    "System: The couple had a great day together. They enjoyed their coffee and talked about their future plans.",
+                timestamp: new Date(),
+            },
+            {
+                id: 4,
+                from: "girlfriend",
+                content:
+                    "I had a great day too. I'm looking forward to our future together. I love you.",
+                timestamp: new Date(),
+            },
+            {
+                id: 5,
+                from: "boyfriend",
+                content:
+                    "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
+                timestamp: new Date(),
+            },
+            {
+                id: 6,
+                from: "system",
+                content:
+                    "System: The couple's relationship is strong and healthy. They communicate well and support each other.",
+                timestamp: new Date(),
+            },
+        ]
+    )
+
+    const insertArgument = (newArgument: string) => {
+        const argument: Argument = {
+            id: argumentStack.length + 1,
             from: "boyfriend",
-            content:
-                "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
-            timestamp: new Date(),
-        },
-        {
-            id: 3,
-            from: "system",
-            content:
-                "System: The couple had a great day together. They enjoyed their coffee and talked about their future plans.",
-            timestamp: new Date(),
-        },
-        {
-            id: 4,
-            from: "girlfriend",
-            content:
-                "I had a great day too. I'm looking forward to our future together. I love you.",
-            timestamp: new Date(),
-        },
-        {
-            id: 5,
-            from: "boyfriend",
-            content:
-                "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
-            timestamp: new Date(),
-        },
-        {
-            id: 6,
-            from: "system",
-            content:
-                "System: The couple's relationship is strong and healthy. They communicate well and support each other.",
-            timestamp: new Date(),
-        },
-    ];
+            content: newArgument,
+            timestamp: new Date()
+        }
+        setArgumentStack(prev => [...prev, argument])
+    }
 
     return (
         <div className={baseStyle.argumentArenaContainer}>
@@ -85,7 +99,7 @@ function ArgumentArena() {
             <HorizontalDivider />
 
             <div className={styles.argumentArena}>
-                {argumentsList.map((argument) => (
+                {argumentStack.map((argument) => (
                     <div
                         key={argument.id}
                         className={`${styles.argumentContainer} ${styles[`${argument.from}Argument`]
@@ -133,17 +147,7 @@ function ArgumentArena() {
 
             <HorizontalDivider />
 
-            <div className={styles.chatInputContainer}>
-                <div className={styles.chatInput}>
-                    <input
-                        type="text"
-                        placeholder="Type your message here..."
-                        className={styles.chatInput}
-                    />
-                </div>
-
-                <button className={baseStyle.sendBtn}>Send</button>
-            </div>
+            <ArgumentInput setArgument={insertArgument} />
         </div>
     );
 }

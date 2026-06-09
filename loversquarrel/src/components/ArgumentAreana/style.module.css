@@ -151,4 +151,32 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--gf-primary);
+  color: var(--text-primary);
+  scrollbar-width: none;
+}
+.boyfriendInput {
+  border: 1px solid var(--bf-primary);
+}
+
+.sendBtn {
+  position: absolute;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gf-primary);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 4px;
+}
+
+.sendBtnBoyfriend {
+  background-color: var(--bf-primary);
 }
