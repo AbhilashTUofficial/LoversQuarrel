@@ -1,4 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+
+// TODO: in future might be a good idea to split game settings and game data
 type chaosCardKeys =
   | "oldIncidentChaosCard"
   | "evidenceChaosCard"
@@ -12,11 +14,27 @@ type statsKeys =
   | "logicStat"
   | "toxicityStat";
 
+type traits = {
+  intellect: number;
+  logic: number;
+  drama: number;
+  sarcasm: number;
+  stubbornness: number;
+  confidence: number;
+  memory: number;
+  empathy: number;
+};
+
+type gameMode = "ai" | "dual" | "solo";
+
 type gameState = {
-  gamemode: "ai" | "manual";
+  gamemode: gameMode;
   game: {
+    currentUserType: "boyfriend" | "girlfriend";
     gameStarted: boolean;
     relationshipHealth: number;
+    boyfriendTraits: traits;
+    girlfriendTraits: traits;
     stats: {
       relationshipHealth: number;
       relationshipStat: number;
@@ -41,8 +59,29 @@ type gameState = {
 const initialState: gameState = {
   gamemode: "ai",
   game: {
+    currentUserType: "girlfriend",
     gameStarted: false,
     relationshipHealth: 100,
+    boyfriendTraits: {
+      intellect: 0,
+      logic: 0,
+      drama: 0,
+      sarcasm: 0,
+      stubbornness: 0,
+      confidence: 0,
+      memory: 0,
+      empathy: 0,
+    },
+    girlfriendTraits: {
+      intellect: 0,
+      logic: 0,
+      drama: 0,
+      sarcasm: 0,
+      stubbornness: 0,
+      confidence: 0,
+      memory: 0,
+      empathy: 0,
+    },
     stats: {
       relationshipHealth: 100,
       relationshipStat: 0,
@@ -68,8 +107,15 @@ const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    setGameMode: (state, action) => {
+    setGameMode: (state, action: PayloadAction<typeof state.gamemode>) => {
       state.gamemode = action.payload;
+    },
+
+    setCurrentUserType: (
+      state,
+      action: PayloadAction<typeof state.game.currentUserType>,
+    ) => {
+      state.game.currentUserType = action.payload;
     },
 
     setChaosCard: (
@@ -96,6 +142,27 @@ const gameSlice = createSlice({
         state.game.stats[stat] = value;
       }
     },
+    setTraits: (
+      state,
+      action: PayloadAction<{
+        trait: traits;
+        value: number;
+        userType: "boyfriend" | "girlfriend";
+      }>,
+    ) => {
+      const { trait, value, userType }: any = action.payload;
+      if (userType === "boyfriend") {
+        state.game.boyfriendTraits = {
+          ...state.game.boyfriendTraits,
+          [trait]: value,
+        };
+      } else if (userType === "girlfriend") {
+        state.game.girlfriendTraits = {
+          ...state.game.girlfriendTraits,
+          [trait]: value,
+        };
+      }
+    },
     setRealationshipHealth: (state, action: PayloadAction<number>) => {
       // todo check if value is between 0 and 100
       state.game.relationshipHealth = action.payload;
@@ -112,5 +179,7 @@ export const {
   setStats,
   setRealationshipHealth,
   setRound,
+  setTraits,
+  setCurrentUserType,
 } = gameSlice.actions;
 export default gameSlice.reducer;

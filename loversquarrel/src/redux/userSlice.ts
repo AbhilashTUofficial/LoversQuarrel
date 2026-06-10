@@ -1,9 +1,11 @@
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit/react";
 
+type userType = "boyfriend" | "girlfriend" | null;
 type userState = {
   username: string | null;
   usertoken: string | null;
-  usertype: string | null;
+  usertype: userType;
   loggedin: boolean;
   userdetails: any;
   loadding: boolean;
@@ -23,12 +25,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUserToken: (state, action) => {
-      console.log(action.payload);
       state.loggedin = true;
       state.usertoken = action.payload;
+    },
+    setUserType: (state, action: PayloadAction<typeof state.usertype>) => {
+      state.usertype = action.payload;
     },
   },
 });
 
-export const { setUserToken } = userSlice.actions;
+export const { setUserToken, setUserType } = userSlice.actions;
 export default userSlice.reducer;

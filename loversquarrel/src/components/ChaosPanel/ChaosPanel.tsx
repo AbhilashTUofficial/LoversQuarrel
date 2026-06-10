@@ -10,6 +10,7 @@ import leaveOnRead from "../../assets/images/chaos_img_04.png";
 import callBestFriend from "../../assets/images/chaos_img_05.png";
 
 import { ChaosCard, AddChaosCard } from "./ChaosCard";
+import { useDispatch, useSelector } from "react-redux";
 
 type chaosCard = {
     id: number;
@@ -18,6 +19,11 @@ type chaosCard = {
 };
 
 function ChaosPanel() {
+
+    const gameSettings = useSelector((state: any) => state.game);
+    const dispatch = useDispatch();
+
+
     const chaosCards: chaosCard[] = [
         {
             id: 1,

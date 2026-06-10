@@ -7,7 +7,11 @@ import StatsPanel from "../../components/StatsPanel/StatsPanel";
 import StartButton from "../../components/StartButton/StartButton";
 import style from "./style.module.css";
 import layoutStyle from "../../layout.module.css";
+import { useSelector } from "react-redux";
 export default function Game() {
+
+    const gameSettings = useSelector((state: any) => state.game)
+
     return (
         <main className={style.pageContainer}>
             <AppHeader />
@@ -27,7 +31,8 @@ export default function Game() {
             </section>
 
             <footer className={`${style.gameControlLayout} ${layoutStyle.gameControlLayout}`}>
-                <section className={[style.container, style.glassCard].join(' ')}>
+                <section className={[style.container, style.glassCard,
+                gameSettings.game.currentUserType === "boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
                     <ChaosPanel />
                 </section>
                 <section className={style.container}>

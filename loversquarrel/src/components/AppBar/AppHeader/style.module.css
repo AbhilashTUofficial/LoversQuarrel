@@ -19,3 +19,31 @@
   padding: 0.8rem;
   gap: 6px;
 }
+
+@keyframes lavaFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.aiBtn {
+  grid-area: ai;
+  background: linear-gradient(
+    135deg,
+    #ff6b6b,
+    #ffb86b,
+    #6bcfff,
+    #8b6bff,
+    #ff6b6b
+  );
+  animation: lavaFlow alternate 2s ease infinite;
+  background-size: 300% 300%;
+}

@@ -306,3 +306,13 @@ img {
 .glowBlue {
   box-shadow: var(--shadow-blue);
 }
+
+.bfBorder {
+  border: 1px solid var(--bf-primary);
+  box-shadow: var(--shadow-blue);
+}
+
+.gfBorder {
+  border: 1px solid var(--gf-primary);
+  box-shadow: var(--shadow-pink);
+}

@@ -2,9 +2,11 @@ import styles from "./style.module.css";
 
 import { Info } from "lucide-react";
 
+type gameMode = "solo" | "dual" | "ai";
 type Props = {
     traits: traits;
     isBoyfriend: boolean;
+    gameMode: gameMode
 };
 
 type traits = {
@@ -30,6 +32,7 @@ function PlayerTraits(props: Props) {
         { name: "💔 Empathy", value: props.traits.empathy },
     ];
 
+
     return (
         <div className={styles.playerTraits}>
             <div className={styles.subtitle}>
@@ -52,13 +55,15 @@ function PlayerTraits(props: Props) {
                             <div className={styles.progressContainer}>
                                 <div
                                     className={`${styles.traitProgress} ${props.isBoyfriend
-                                            ? styles.progressBoy
-                                            : styles.progressGirl
+                                        ? styles.progressBoy
+                                        : styles.progressGirl
                                         }`}
                                     style={{ width: `${trait.value}%` }}
                                 />
+                                {
+                                    props.gameMode === "ai" && <div className={styles.thumb} />
+                                }
 
-                                <div className={styles.thumb} />
                             </div>
                         </div>
 

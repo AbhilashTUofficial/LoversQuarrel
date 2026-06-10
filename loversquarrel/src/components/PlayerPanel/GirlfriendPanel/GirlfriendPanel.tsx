@@ -4,18 +4,26 @@ import PlayerHeader from "../PlayerHeader/PlayerHeader";
 import HorizontalDivider from "../../Divider/HorizontalDivider";
 import PlayerTraits from "../PlayerTraits/PlayerTraits";
 import ArgumentTags from "../ArgumentTags/ArgumentTags";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+type girlfriendTraits = {
+    intellect: number;
+    logic: number;
+    drama: number;
+    sarcasm: number;
+    stubborness: number;
+    confidence: number;
+    memory: number;
+    empathy: number;
+};
 
 function GirlfriendPanel() {
-    const dummyGirlData = {
-        intellect: 100,
-        logic: 30,
-        drama: 90,
-        sarcasm: 30,
-        stubborness: 100,
-        confidence: 20,
-        memory: 100,
-        empathy: 80,
-    };
+    const gameSettings = useSelector((state: any) => state.game)
+    const dispatch = useDispatch();
+
+    const [girlfriendTraits, setGirlfriendTraits] = useState<girlfriendTraits>(gameSettings.game.girlfriendTraits);
+
 
     const activeTags = [
         "Logical",
@@ -33,8 +41,9 @@ function GirlfriendPanel() {
 
             <div className={baseStyle.playerPanelContent}>
                 <PlayerTraits
-                    traits={dummyGirlData}
+                    traits={girlfriendTraits}
                     isBoyfriend={false}
+                    gameMode={gameSettings.gamemode}
                 />
 
                 <ArgumentTags
