@@ -11,12 +11,6 @@ import { useState } from "react";
 import { setGameMode } from "../../../redux/gameSlice";
 
 type gameMode = "ai" | "dual" | "solo";
-type mode = {
-    label: string;
-    className: string;
-    next: gameMode;
-    icon: any;
-}
 function AppHeader() {
 
     const gameSettings = useSelector((state: any) => state.game)

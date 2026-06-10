@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from "../style.module.css";
 import { Send } from 'lucide-react';
-function ArgumentInput({ setArgument }) {
+
+
+function ArgumentInput({ setArgument }: any) {
 
     const [typingArgument, setTypingArgument] = useState("")
     const handleInput = () => {
@@ -18,7 +20,7 @@ function ArgumentInput({ setArgument }) {
                 value={typingArgument}
                 placeholder="Type your message here..."
                 className={`${styles.chatInput} ${isBoyfriend && styles.boyfriendInput}`}
-                onChange={(e: Event) => setTypingArgument(e.target.value)}
+                onChange={(e: any) => setTypingArgument(e.target.value)}
             />
             <div onClick={handleInput} className={`${styles.sendBtn} ${isBoyfriend && styles.sendBtnBoyfriend}`}>
                 <Send />

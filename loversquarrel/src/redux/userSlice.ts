@@ -1,7 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit/react";
 
-type userType = "boyfriend" | "girlfriend" | null;
+type userType = "Boyfriend" | "girlfriend" | null;
 type userState = {
   username: string | null;
   usertoken: string | null;

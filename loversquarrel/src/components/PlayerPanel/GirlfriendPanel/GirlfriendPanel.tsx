@@ -5,7 +5,7 @@ import HorizontalDivider from "../../Divider/HorizontalDivider";
 import PlayerTraits from "../PlayerTraits/PlayerTraits";
 import ArgumentTags from "../ArgumentTags/ArgumentTags";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 type girlfriendTraits = {
     intellect: number;
@@ -20,9 +20,8 @@ type girlfriendTraits = {
 
 function GirlfriendPanel() {
     const gameSettings = useSelector((state: any) => state.game)
-    const dispatch = useDispatch();
 
-    const [girlfriendTraits, setGirlfriendTraits] = useState<girlfriendTraits>(gameSettings.game.girlfriendTraits);
+    const [girlfriendTraits, _] = useState<girlfriendTraits>(gameSettings.game.girlfriendTraits);
 
 
     const activeTags = [

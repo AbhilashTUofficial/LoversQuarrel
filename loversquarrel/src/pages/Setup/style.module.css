@@ -4,14 +4,175 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
 .setupCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
   width: 60%;
-  height: 80%;
+  height: fit-content;
+  padding: 12px;
+}
+
+.setupHeader {
+  /* background-color: red; */
+}
+
+.headerTxt {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.tabs {
+  width: 100%;
+}
+
+.tabsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 12px;
+}
+
+.configureBtn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+  background-color: var(--surface);
+}
+
+.configureBtn:hover {
+  color: var(--text-primary);
+}
+
+.tabList {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  width: fit-content;
+}
+
+.tab {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+
+.gfTab {
+  background: var(--gf-secondary);
+  color: var(--text-primary);
+}
+
+.bfTab {
+  background: var(--bf-secondary);
+  color: var(--text-primary);
+}
+.gfTab:hover {
+  color: var(--gf-primary);
+  background: var(--gf-accent);
+}
+
+.bfTab:hover {
+  color: var(--bf-primary);
+  background: var(--bf-accent);
+}
+
+.tab:focus {
+  outline: none;
+}
+
+.activeTab {
+  color: var(--text-primary);
+}
+
+.tabPanel {
+  display: none;
+}
+
+.activePanel {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.traitsContainer {
+  grid-area: traits;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.argumentInputCont {
+  display: grid;
+  gap: 16px;
+  grid-template-areas:
+    "argument argument traits"
+    "genbtn genbtn genbtn";
+  margin: 12px;
+}
+
+@media (max-width: 1100px) {
+  .argumentInputCont {
+    grid-template-areas: "argument" "traits" "genbtn";
+  }
+  .setupCard {
+    width: 100%;
+  }
+}
+
+.argumentInput {
+  grid-area: argument;
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  resize: none;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+.bfArgumentBtn {
+  background-color: var(--bf-secondary);
+}
+.gfArgumentBtn {
+  background-color: var(--gf-secondary);
+}
+.argumentBtn {
+  grid-area: genbtn;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
 }

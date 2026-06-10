@@ -1,5 +1,5 @@
 import styles from "./style.module.css";
-
+import baseStyle from "../../../base.module.css"
 import { Info } from "lucide-react";
 
 type gameMode = "solo" | "dual" | "ai";
@@ -35,10 +35,9 @@ function PlayerTraits(props: Props) {
 
     return (
         <div className={styles.playerTraits}>
-            <div className={styles.subtitle}>
+            <div className={baseStyle.subtitle}>
                 TRAITS
-
-                <Info className={styles.infoIcon} />
+                <Info className={baseStyle.infoIcon} />
             </div>
 
             <div className={styles.traits}>

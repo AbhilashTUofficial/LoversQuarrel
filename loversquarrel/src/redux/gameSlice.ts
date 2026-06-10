@@ -30,7 +30,7 @@ type gameMode = "ai" | "dual" | "solo";
 type gameState = {
   gamemode: gameMode;
   game: {
-    currentUserType: "boyfriend" | "girlfriend";
+    currentUserType: "Boyfriend" | "girlfriend";
     gameStarted: boolean;
     relationshipHealth: number;
     boyfriendTraits: traits;
@@ -146,21 +146,14 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{
         trait: traits;
-        value: number;
-        userType: "boyfriend" | "girlfriend";
+        userType: "Boyfriend" | "Girlfriend";
       }>,
     ) => {
-      const { trait, value, userType }: any = action.payload;
-      if (userType === "boyfriend") {
-        state.game.boyfriendTraits = {
-          ...state.game.boyfriendTraits,
-          [trait]: value,
-        };
-      } else if (userType === "girlfriend") {
-        state.game.girlfriendTraits = {
-          ...state.game.girlfriendTraits,
-          [trait]: value,
-        };
+      const { trait, userType }: any = action.payload;
+      if (userType === "Boyfriend") {
+        state.game.boyfriendTraits = trait;
+      } else if (userType === "Girlfriend") {
+        state.game.girlfriendTraits = trait;
       }
     },
     setRealationshipHealth: (state, action: PayloadAction<number>) => {

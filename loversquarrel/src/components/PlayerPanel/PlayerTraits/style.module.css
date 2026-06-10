@@ -57,6 +57,7 @@
 .traitProgress {
   height: 6px;
   border-radius: 6px;
+  transition: 2s ease;
 }
 
 .progressBoy {

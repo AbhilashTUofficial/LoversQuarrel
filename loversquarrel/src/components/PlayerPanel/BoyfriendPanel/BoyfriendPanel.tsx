@@ -1,10 +1,9 @@
 import baseStyle from "../../../base.module.css";
-
 import PlayerHeader from "../PlayerHeader/PlayerHeader";
 import HorizontalDivider from "../../Divider/HorizontalDivider";
 import PlayerTraits from "../PlayerTraits/PlayerTraits";
 import ArgumentTags from "../ArgumentTags/ArgumentTags";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 
@@ -22,9 +21,8 @@ type boyfriendTraits = {
 function BoyfriendPanel() {
 
     const gameSettings = useSelector((state: any) => state.game)
-    const dispatch = useDispatch();
 
-    const [boyfriendTraits, setBoyfriendTraits] = useState<boyfriendTraits>(gameSettings.game.boyfriendTraits);
+    const [boyfriendTraits, _] = useState<boyfriendTraits>(gameSettings.game.boyfriendTraits);
 
     const activeTags = ["Logical", "Dramatic", "Sarcasm", "Stubborn"];
 

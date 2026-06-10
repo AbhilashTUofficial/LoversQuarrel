@@ -32,7 +32,7 @@ export default function Game() {
 
             <footer className={`${style.gameControlLayout} ${layoutStyle.gameControlLayout}`}>
                 <section className={[style.container, style.glassCard,
-                gameSettings.game.currentUserType === "boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
+                gameSettings.game.currentUserType === "Boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
                     <ChaosPanel />
                 </section>
                 <section className={style.container}>

@@ -1,25 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUserToken, setUserType } from '../../redux/userSlice';
 import style from "./style.module.css";
 import baseStyle from "../../base.module.css"
-import { setGameMode } from '../../redux/gameSlice';
+import { setCurrentUserType, setGameMode } from '../../redux/gameSlice';
 
 function Home() {
 
-    const userData = useSelector((state: any) => state.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const onClickBoyfriend = () => {
-        dispatch(setUserToken('boyfriend'));
-        dispatch(setUserType("boyfriend"))
+        dispatch(setUserToken("Boyfriend"));
+        dispatch(setUserType("Boyfriend"))
+        dispatch(setCurrentUserType("Boyfriend"))
         dispatch(setGameMode("solo"))
         navigate('/setup')
     }
 
     const onClickGirlfriend = () => {
-        dispatch(setUserToken('girlfriend'));
+        dispatch(setUserToken("girlfriend"));
         dispatch(setUserType("girlfriend"))
+        dispatch(setCurrentUserType("girlfriend"))
         dispatch(setGameMode("solo"))
         navigate('/setup')
     }
@@ -28,12 +29,14 @@ function Home() {
         dispatch(setUserToken('dual'));
         dispatch(setUserType("girlfriend"))
         dispatch(setGameMode("dual"))
+        dispatch(setCurrentUserType("girlfriend"))
         navigate('/setup')
     }
 
     const onClickAIMode = () => {
         dispatch(setUserToken('dual'));
         dispatch(setUserType("girlfriend"))
+        dispatch(setCurrentUserType("girlfriend"))
         dispatch(setGameMode("ai"))
         navigate('/setup')
     }

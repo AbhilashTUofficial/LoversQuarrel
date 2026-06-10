@@ -10,7 +10,7 @@ import { useState } from "react";
 
 type Argument = {
     id: number;
-    from: "girlfriend" | "boyfriend" | "system";
+    from: "girlfriend" | "Boyfriend" | "system";
     content: string;
     timestamp: Date;
 };
@@ -34,7 +34,7 @@ function ArgumentArena() {
             },
             {
                 id: 2,
-                from: "boyfriend",
+                from: "Boyfriend",
                 content:
                     "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
                 timestamp: new Date(),
@@ -55,7 +55,7 @@ function ArgumentArena() {
             },
             {
                 id: 5,
-                from: "boyfriend",
+                from: "Boyfriend",
                 content:
                     "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
                 timestamp: new Date(),
@@ -73,7 +73,7 @@ function ArgumentArena() {
     const insertArgument = (newArgument: string) => {
         const argument: Argument = {
             id: argumentStack.length + 1,
-            from: "boyfriend",
+            from: "Boyfriend",
             content: newArgument,
             timestamp: new Date()
         }
@@ -105,16 +105,16 @@ function ArgumentArena() {
                         className={`${styles.argumentContainer} ${styles[`${argument.from}Argument`]
                             }`}
                     >
-                        {argument.from === "boyfriend" ? (
+                        {argument.from === "Boyfriend" ? (
                             <img
                                 src={boyfriend}
                                 className={styles.avatar}
-                                alt="boyfriend"
+                                alt="Boyfriend"
                             />
                         ) : null}
 
                         {/* {
-              argument.from === "boyfriend" ? <div className={styles.boyMessageTail}></div> : null
+              argument.from === "Boyfriend" ? <div className={styles.boyMessageTail}></div> : null
             } */}
 
                         <div
