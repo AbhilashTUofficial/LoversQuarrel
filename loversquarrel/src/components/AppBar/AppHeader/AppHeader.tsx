@@ -58,7 +58,7 @@ function AppHeader() {
     };
 
     return (
-        <div className={`${baseStyle.headerContainer} ${LayoutStyle.headerContainer}`}>
+        <div className={LayoutStyle.headerContainer}>
             <div className={styles.headerLeading}>
                 <img className={styles.logo} src={logo} alt="" />
                 <VerticalDivider />

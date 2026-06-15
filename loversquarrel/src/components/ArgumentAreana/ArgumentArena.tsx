@@ -1,5 +1,4 @@
 import styles from "./style.module.css";
-import baseStyle from "../../base.module.css";
 
 import { HeartIcon } from "lucide-react";
 import HorizontalDivider from "../Divider/HorizontalDivider";
@@ -81,9 +80,9 @@ function ArgumentArena() {
     }
 
     return (
-        <div className={baseStyle.argumentArenaContainer}>
+        <div className={styles.argumentArenaContainer}>
             <div className={styles.relationshipHealthContainer}>
-                <HeartIcon className={baseStyle.heartIcon} />
+                <HeartIcon className={styles.heartIcon} />
                 Relationship Health
 
                 <div className={styles.healthBar}>
@@ -93,7 +92,7 @@ function ArgumentArena() {
                     />
                 </div>
 
-                <div className={baseStyle.healthValue}>70%</div>
+                <div className={styles.healthValue}>70%</div>
                 <HorizontalDivider />
             </div>
 
@@ -121,11 +120,11 @@ function ArgumentArena() {
                             key={argument.id}
                             className={`${styles.argument} ${styles[argument.from]}`}
                         >
-                            <div className={baseStyle.argumentContent}>
+                            <div className={styles.argumentContent}>
                                 {argument.content}
                             </div>
 
-                            <div className={baseStyle.argumentTimestamp}>
+                            <div className={styles.argumentTimestamp}>
                                 {argument.timestamp.toLocaleString()}
                             </div>
                         </div>

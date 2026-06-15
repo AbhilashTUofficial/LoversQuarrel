@@ -182,3 +182,35 @@
 .sendBtnBoyfriend {
   background-color: var(--bf-primary);
 }
+
+.argumentArenaContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heartIcon {
+  color: var(--secondary);
+  fill: rgba(236, 72, 153, 0.2);
+  width: 20px;
+  height: 20px;
+}
+
+.healthValue {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.argumentContent {
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.argumentTimestamp {
+  font-size: 10px;
+  color: var(--text-muted);
+  align-self: flex-end;
+  margin-top: 4px;
+}
+

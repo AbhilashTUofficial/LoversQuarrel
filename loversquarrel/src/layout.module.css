@@ -8,12 +8,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px;
 }
 
 .gameLayout {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: "boyfriendPanel argumentArena girlfriendPanel";
+  padding: 0 16px 6px;
+  gap: 8px;
 }
 .boyfriendPanel {
   grid-area: boyfriendPanel;
@@ -47,6 +50,8 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-template-areas: "chaosPanel startButton statsPanel";
+  padding: 6px 16px;
+  gap: 8px;
 }
 
 .chaosPanel {
@@ -69,12 +74,4 @@
   }
 }
 
-.playerPanel {
-  display: flex;
-  flex-direction: column;
-}
 
-.playerPanelContent {
-  height: 54vh;
-  overflow-y: auto;
-}

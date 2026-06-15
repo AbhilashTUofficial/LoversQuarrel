@@ -6,6 +6,7 @@ import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
 import StatsPanel from "../../components/StatsPanel/StatsPanel";
 import StartButton from "../../components/StartButton/StartButton";
 import style from "./style.module.css";
+import baseStyle from "../../base.module.css";
 import layoutStyle from "../../layout.module.css";
 import { useSelector } from "react-redux";
 export default function Game() {
@@ -13,32 +14,32 @@ export default function Game() {
     const gameSettings = useSelector((state: any) => state.game)
 
     return (
-        <main className={style.pageContainer}>
+        <main className={baseStyle.pageContainer}>
             <AppHeader />
 
-            <section className={`${style.gameLayout} ${layoutStyle.gameLayout}`}>
-                <aside className={[style.glassCard, layoutStyle.boyfriendPanel].join(' ')}>
+            <section className={layoutStyle.gameLayout}>
+                <aside className={[baseStyle.glassCard, layoutStyle.boyfriendPanel].join(' ')}>
                     <BoyfriendPanel />
                 </aside>
 
-                <section className={[style.glassCard, layoutStyle.argumentArena].join(' ')}>
+                <section className={[baseStyle.glassCard, layoutStyle.argumentArena].join(' ')}>
                     <ArgumentArena />
                 </section>
 
-                <aside className={[style.glassCard, layoutStyle.girlfriendPanel].join(' ')}>
+                <aside className={[baseStyle.glassCard, layoutStyle.girlfriendPanel].join(' ')}>
                     <GirlfriendPanel />
                 </aside>
             </section>
 
-            <footer className={`${style.gameControlLayout} ${layoutStyle.gameControlLayout}`}>
-                <section className={[style.container, style.glassCard,
+            <footer className={layoutStyle.gameControlLayout}>
+                <section className={[baseStyle.glassCard,
                 gameSettings.game.currentUserType === "Boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
                     <ChaosPanel />
                 </section>
-                <section className={style.container}>
+                <section>
                     <StartButton />
                 </section>
-                <section className={[style.container, style.glassCard].join(' ')}>
+                <section className={baseStyle.glassCard}>
                     <StatsPanel />
                 </section>
             </footer>
