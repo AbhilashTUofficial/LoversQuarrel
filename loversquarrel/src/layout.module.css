@@ -59,7 +59,7 @@
   grid-area: statsPanel;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
   .gameControlLayout {
     grid-template-columns: 1fr;
     grid-template-areas:

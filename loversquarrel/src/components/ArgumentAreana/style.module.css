@@ -142,7 +142,8 @@
   gap: 12px;
   width: 100%;
   padding: 12px 20px 6px 12px;
-  height: 9vh;
+  /* height: 9vh; */
+  overflow: hidden;
 }
 
 .chatInput {
@@ -150,13 +151,14 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 100%;
+  /* height: 8vh; */
   padding: 12px;
   border-radius: 16px;
   background-color: var(--surface);
   border: 1px solid var(--gf-primary);
   color: var(--text-primary);
   scrollbar-width: none;
+  resize: none;
 }
 .boyfriendInput {
   border: 1px solid var(--bf-primary);

@@ -37,11 +37,10 @@
     0 0 40px var(--gf-accent);
 
   transition: all 0.25s ease;
-
   animation: pulseGlow 2.5s infinite;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
   .playButton {
     width: 100%;
     border-radius: 6px;

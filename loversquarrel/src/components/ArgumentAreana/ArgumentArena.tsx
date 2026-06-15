@@ -94,9 +94,9 @@ function ArgumentArena() {
                 </div>
 
                 <div className={baseStyle.healthValue}>70%</div>
+                <HorizontalDivider />
             </div>
 
-            <HorizontalDivider />
 
             <div className={styles.argumentArena}>
                 {argumentStack.map((argument) => (
@@ -143,10 +143,10 @@ function ArgumentArena() {
                         ) : null}
                     </div>
                 ))}
+                <HorizontalDivider />
+                
             </div>
-
-            <HorizontalDivider />
-
+            
             <ArgumentInput setArgument={insertArgument} />
         </div>
     );
