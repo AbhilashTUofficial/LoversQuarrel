@@ -159,7 +159,9 @@
   color: var(--text-primary);
   scrollbar-width: none;
   resize: none;
+
 }
+
 .boyfriendInput {
   border: 1px solid var(--bf-primary);
 }
@@ -213,4 +215,3 @@
   align-self: flex-end;
   margin-top: 4px;
 }
-

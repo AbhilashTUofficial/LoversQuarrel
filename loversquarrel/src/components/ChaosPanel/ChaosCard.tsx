@@ -2,24 +2,24 @@ import styles from "./style.module.css";
 import baseStyle from "../../base.module.css";
 
 import { Plus } from "lucide-react";
+import type { ChaosCardProps } from "./types";
 
-type card = {
-    id: number;
-    image: any;
-    title: string;
-};
-
-export const ChaosCard = (card: card) => {
+export const ChaosCard = ({ id: _id, image, title, reduxKey, isActivated, onToggle }: ChaosCardProps) => {
     return (
-        <div className={`${baseStyle.card} ${styles.chaosCard}`}>
+        <div
+            className={`${baseStyle.card} ${styles.chaosCard} ${isActivated ? styles.chaosCardActivated : ""}`}
+            onClick={() => onToggle(reduxKey)}
+            role="button"
+            aria-pressed={isActivated}
+        >
             <img
                 className={styles.chaosImage}
-                src={card.image}
-                alt=""
+                src={image}
+                alt={title}
             />
 
             <div className={baseStyle.subtitle}>
-                {card.title}
+                {title}
             </div>
         </div>
     );

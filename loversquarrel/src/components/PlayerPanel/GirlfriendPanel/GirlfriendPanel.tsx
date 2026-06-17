@@ -4,33 +4,23 @@ import PlayerHeader from "../PlayerHeader/PlayerHeader";
 import HorizontalDivider from "../../Divider/HorizontalDivider";
 import PlayerTraits from "../PlayerTraits/PlayerTraits";
 import ArgumentTags from "../ArgumentTags/ArgumentTags";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
-type girlfriendTraits = {
-    intellect: number;
-    logic: number;
-    drama: number;
-    sarcasm: number;
-    stubborness: number;
-    confidence: number;
-    memory: number;
-    empathy: number;
-};
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { addPlayerTag, removePlayerTag } from "../../../redux/gameSlice";
+import type { Traits } from "./types";
 
 function GirlfriendPanel() {
-    const gameSettings = useSelector((state: any) => state.game)
+    const dispatch = useAppDispatch();
+    const gameSettings = useAppSelector((state) => state.game);
+    const girlfriendTraits: Traits = gameSettings.game.girlfriendTraits;
+    const activeTags: string[] = gameSettings.game.girlfriendTags;
 
-    const [girlfriendTraits, _] = useState<girlfriendTraits>(gameSettings.game.girlfriendTraits);
+    const handleAddTag = (tag: string) => {
+        dispatch(addPlayerTag({ userType: "Girlfriend", tag }));
+    };
 
-
-    const activeTags = [
-        "Logical",
-        "Dramatic",
-        "Sarcasm",
-        "Stubborn",
-        "Confident",
-    ];
+    const handleRemoveTag = (tag: string) => {
+        dispatch(removePlayerTag({ userType: "Girlfriend", tag }));
+    };
 
     return (
         <div className={baseStyle.playerPanel}>
@@ -48,6 +38,8 @@ function GirlfriendPanel() {
                 <ArgumentTags
                     activeTags={activeTags}
                     isBoyfriend={false}
+                    onAddTag={handleAddTag}
+                    onRemoveTag={handleRemoveTag}
                 />
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import baseStyle from "../../base.module.css";
 import style from "./style.module.css"
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -10,8 +10,8 @@ import GirlfriendPanel from "../../components/PlayerPanel/GirlfriendPanel/Girlfr
 import { useNavigate } from "react-router-dom";
 function Setup() {
 
-    const gameSettings = useSelector((state: any) => state.game)
-    const dispatch = useDispatch();
+    const gameSettings = useAppSelector((state) => state.game)
+    const dispatch = useAppDispatch();
     const [isBfTabActive, setIsBfTabActive] = useState(gameSettings.game.currentUserType == "Boyfriend");
     const navigate = useNavigate();
 
@@ -61,7 +61,7 @@ function Setup() {
 
                 <div className={style.setupHeader}>
                     {
-                        gameSettings.game.gamemode === "ai" ?
+                        gameSettings.gamemode === "ai" ?
                             <div className={style.headerTxt}>Configure AI</div> :
                             <div className={style.headerTxt}>Configure {gameSettings.game.currentUserType}</div>
                     }

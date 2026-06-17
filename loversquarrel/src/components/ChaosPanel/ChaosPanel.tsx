@@ -10,42 +10,51 @@ import leaveOnRead from "../../assets/images/chaos_img_04.png";
 import callBestFriend from "../../assets/images/chaos_img_05.png";
 
 import { ChaosCard, AddChaosCard } from "./ChaosCard";
-
-type chaosCard = {
-    id: number;
-    image: any;
-    title: string;
-};
+import type { ChaosCardItem } from "./types";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { toggleChaosCard } from "../../redux/gameSlice";
+import type { ChaosCardKeys } from "../../redux/gameSlice";
 
 function ChaosPanel() {
+    const dispatch = useAppDispatch();
+    const chaosCardStates = useAppSelector((state) => state.game.game.chaosCards);
 
-    const chaosCards: chaosCard[] = [
+    const chaosCards: ChaosCardItem[] = [
         {
             id: 1,
             image: oldIncident,
             title: "Old Incident",
+            reduxKey: "oldIncidentChaosCard",
         },
         {
             id: 2,
             image: screenshotEvidence,
             title: "Evidence",
+            reduxKey: "evidenceChaosCard",
         },
         {
             id: 3,
             image: includeMom,
             title: "Include Mom",
+            reduxKey: "includeMomChaosCard",
         },
         {
             id: 4,
             image: leaveOnRead,
             title: "Leave On Read",
+            reduxKey: "leaveOnReadChaosCard",
         },
         {
             id: 5,
             image: callBestFriend,
             title: "Best Friend",
+            reduxKey: "bestFriendChaosCard",
         },
     ];
+
+    const handleToggle = (key: ChaosCardKeys) => {
+        dispatch(toggleChaosCard(key));
+    };
 
     return (
         <div className={styles.chaosPanel}>
@@ -56,8 +65,13 @@ function ChaosPanel() {
             </div>
 
             <div className={styles.chaosCards}>
-                {chaosCards.map((card: chaosCard) => (
-                    <ChaosCard key={card.id} {...card} />
+                {chaosCards.map((card: ChaosCardItem) => (
+                    <ChaosCard
+                        key={card.id}
+                        {...card}
+                        isActivated={chaosCardStates[card.reduxKey] === "activated"}
+                        onToggle={handleToggle}
+                    />
                 ))}
 
                 <AddChaosCard />

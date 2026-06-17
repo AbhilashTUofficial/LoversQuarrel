@@ -1,14 +1,8 @@
 import styles from "../style.module.css";
 import baseStyle from "../../../base.module.css";
+import type { LiveStatProps } from "./types";
 
-type stats = {
-    id: number;
-    image: any;
-    title: string;
-    value: number;
-};
-
-function LiveStat({ stats }: { stats: stats }) {
+function LiveStat({ stats }: LiveStatProps) {
     return (
         <div className={`${baseStyle.card} ${styles.liveStatsCard}`}>
             <div className={baseStyle.subtitle}>
@@ -19,7 +13,7 @@ function LiveStat({ stats }: { stats: stats }) {
                 <img
                     className={styles.liveStatsImage}
                     src={stats.image}
-                    alt=""
+                    alt={stats.title}
                 />
 
                 <div className={styles.progressValue}>

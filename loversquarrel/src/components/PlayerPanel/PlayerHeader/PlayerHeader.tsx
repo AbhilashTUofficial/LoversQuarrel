@@ -1,21 +1,16 @@
 import styles from "./style.module.css";
+import type { PlayerHeaderProps } from "./types";
 
 import boyfriend from "../../../assets/boyfriend.png";
 import girlfriend from "../../../assets/girlfriend.png";
 
-function PlayerHeader({
-    isBoyfriend,
-    mode,
-}: {
-    isBoyfriend: boolean;
-    mode: "Defensive" | "Offensive" | "Furious";
-}) {
+function PlayerHeader({ isBoyfriend, mode }: PlayerHeaderProps) {
     return isBoyfriend ? (
         <div className={styles.playerHeaderContainer}>
             <img
                 src={boyfriend}
                 className={styles.avatar}
-                alt=""
+                alt="Boyfriend"
             />
 
             <div className={styles.nameTag}>
@@ -39,7 +34,7 @@ function PlayerHeader({
             <img
                 src={girlfriend}
                 className={styles.avatar}
-                alt=""
+                alt="Girlfriend"
             />
 
             <div className={styles.nameTag}>

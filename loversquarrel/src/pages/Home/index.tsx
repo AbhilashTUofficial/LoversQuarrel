@@ -11,34 +11,34 @@ function Home() {
     const navigate = useNavigate();
     const onClickBoyfriend = () => {
         dispatch(setUserToken("Boyfriend"));
-        dispatch(setUserType("Boyfriend"))
-        dispatch(setCurrentUserType("Boyfriend"))
-        dispatch(setGameMode("solo"))
-        navigate('/setup')
+        dispatch(setUserType("Boyfriend"));
+        dispatch(setCurrentUserType("Boyfriend"));
+        dispatch(setGameMode("solo"));
+        navigate('/setup');
     }
 
     const onClickGirlfriend = () => {
-        dispatch(setUserToken("girlfriend"));
-        dispatch(setUserType("girlfriend"))
-        dispatch(setCurrentUserType("girlfriend"))
-        dispatch(setGameMode("solo"))
-        navigate('/setup')
+        dispatch(setUserToken("Girlfriend"));
+        dispatch(setUserType("Girlfriend"));
+        dispatch(setCurrentUserType("Girlfriend"));
+        dispatch(setGameMode("solo"));
+        navigate('/setup');
     }
 
     const onClickDual = () => {
         dispatch(setUserToken('dual'));
-        dispatch(setUserType("girlfriend"))
-        dispatch(setGameMode("dual"))
-        dispatch(setCurrentUserType("girlfriend"))
-        navigate('/setup')
+        dispatch(setUserType("Girlfriend"));
+        dispatch(setGameMode("dual"));
+        dispatch(setCurrentUserType("Girlfriend"));
+        navigate('/setup');
     }
 
     const onClickAIMode = () => {
         dispatch(setUserToken('dual'));
-        dispatch(setUserType("girlfriend"))
-        dispatch(setCurrentUserType("girlfriend"))
-        dispatch(setGameMode("ai"))
-        navigate('/setup')
+        dispatch(setUserType("Girlfriend"));
+        dispatch(setCurrentUserType("Girlfriend"));
+        dispatch(setGameMode("ai"));
+        navigate('/setup');
     }
 
     return (

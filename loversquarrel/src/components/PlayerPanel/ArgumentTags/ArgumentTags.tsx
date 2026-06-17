@@ -2,13 +2,16 @@ import styles from "./style.module.css";
 import baseStyle from "../../../base.module.css";
 
 import { Info, X } from "lucide-react";
+import type { ArgumentTagsProps } from "./types";
 
-type Props = {
-    isBoyfriend: boolean;
-    activeTags: String[];
-};
+function ArgumentTags({ isBoyfriend, activeTags, onAddTag, onRemoveTag }: ArgumentTagsProps) {
+    const handleAddTag = () => {
+        const tag = prompt("Enter a new tag:");
+        if (tag && tag.trim().length > 0) {
+            onAddTag(tag.trim());
+        }
+    };
 
-function ArgumentTags(props: Props) {
     return (
         <div className={styles.activeTagContainer}>
             <div className={baseStyle.subtitle}>
@@ -18,21 +21,29 @@ function ArgumentTags(props: Props) {
             </div>
 
             <div className={styles.tags}>
-                {props.activeTags.map((tag, index) => (
+                {activeTags.map((tag: string, index: number) => (
                     <div
                         key={index}
-                        className={`${styles.activeTag} ${props.isBoyfriend
+                        className={`${styles.activeTag} ${isBoyfriend
                             ? styles.activeTagBoy
                             : styles.activeTagGirl
                             }`}
                     >
                         {tag}
 
-                        <X className={styles.closeIcon} />
+                        <X
+                            className={styles.closeIcon}
+                            onClick={() => onRemoveTag(tag)}
+                        />
                     </div>
                 ))}
 
-                <div className={styles.addNewTag}>+ Add Tag</div>
+                <div
+                    className={styles.addNewTag}
+                    onClick={handleAddTag}
+                >
+                    + Add Tag
+                </div>
             </div>
         </div>
     );

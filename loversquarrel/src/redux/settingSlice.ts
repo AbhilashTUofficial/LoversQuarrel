@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-type settingState = {
+export type SettingState = {
   theme: "darkmode" | "lightmode";
   mode: "ai" | "manual";
   userLoggedin: boolean;
 };
 
-const initialState: settingState = {
+const initialState: SettingState = {
   theme: "darkmode",
   mode: "manual",
   userLoggedin: false,
@@ -16,13 +16,13 @@ const settingSlice = createSlice({
   name: "setting",
   initialState,
   reducers: {
-    setUserLoggedIn: (state, action) => {
+    setUserLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.userLoggedin = action.payload;
     },
-    setTheme: (state, action) => {
+    setTheme: (state, action: PayloadAction<"darkmode" | "lightmode">) => {
       state.theme = action.payload;
     },
-    setMode: (state, action) => {
+    setMode: (state, action: PayloadAction<"ai" | "manual">) => {
       state.mode = action.payload;
     },
   },

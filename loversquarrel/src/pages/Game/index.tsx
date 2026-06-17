@@ -8,10 +8,10 @@ import StartButton from "../../components/StartButton/StartButton";
 import style from "./style.module.css";
 import baseStyle from "../../base.module.css";
 import layoutStyle from "../../layout.module.css";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/store";
 export default function Game() {
 
-    const gameSettings = useSelector((state: any) => state.game)
+    const gameSettings = useAppSelector((state) => state.game)
 
     return (
         <main className={baseStyle.pageContainer}>

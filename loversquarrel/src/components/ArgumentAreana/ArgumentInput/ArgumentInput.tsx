@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import styles from "../style.module.css";
 import { Send } from 'lucide-react';
+import type { ArgumentInputProps } from "./types";
 
+function ArgumentInput({ setArgument, isBoyfriend }: ArgumentInputProps) {
 
-function ArgumentInput({ setArgument }: any) {
+    const [typingArgument, setTypingArgument] = useState<string>("");
 
-    const [typingArgument, setTypingArgument] = useState("")
     const handleInput = () => {
-        typingArgument.trim().length > 0 &&
-            setArgument(typingArgument)
+        if (typingArgument.trim().length > 0) {
+            setArgument(typingArgument.trim());
+        }
         setTypingArgument("");
-    }
+    };
 
-    const isBoyfriend = true
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleInput();
+        }
+    };
 
     return (
         <div className={`${styles.chatInputContainer} `}>
@@ -20,13 +27,17 @@ function ArgumentInput({ setArgument }: any) {
                 value={typingArgument}
                 placeholder="Type your message here..."
                 className={`${styles.chatInput} ${isBoyfriend && styles.boyfriendInput}`}
-                onChange={(e: any) => setTypingArgument(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setTypingArgument(e.target.value)}
+                onKeyDown={handleKeyDown}
             />
-            <div onClick={handleInput} className={`${styles.sendBtn} ${isBoyfriend && styles.sendBtnBoyfriend}`}>
+            <div
+                onClick={handleInput}
+                className={`${styles.sendBtn} ${isBoyfriend && styles.sendBtnBoyfriend}`}
+            >
                 <Send />
             </div>
         </div>
-    )
+    );
 }
 
-export default ArgumentInput
+export default ArgumentInput;
