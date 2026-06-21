@@ -38,14 +38,14 @@
   scrollbar-width: none;
 }
 
-.girlfriendArgument {
+.GirlfriendArgument {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
-.boyfriendArgument {
+.BoyfriendArgument {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -97,13 +97,13 @@
   border-radius: 0 0 0 12px;
 } */
 
-.girlfriend {
+.Girlfriend {
   background-color: var(--gf-secondary);
   border: 1px solid var(--gf-primary);
   color: var(--text-primary);
 }
 
-.boyfriend {
+.Goyfriend {
   background-color: var(--bf-secondary);
   border: 1px solid var(--bg-primary);
   color: var(--text-primary);
@@ -159,7 +159,6 @@
   color: var(--text-primary);
   scrollbar-width: none;
   resize: none;
-
 }
 
 .boyfriendInput {

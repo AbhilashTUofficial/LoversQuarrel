@@ -1,14 +1,23 @@
 import User from "./auth.model.js";
+import bcrypt from "bcryptjs";
 
-const login = async (req) => {
+const login = async (user) => {
   {
+    console.log("user", user);
     try {
       const userObject = await User.findOne({
-        email: req.body.email,
-        password: req.body.password,
+        username: user.username,
+        password: user.password,
       });
 
-      const isMatch = await bcrypt.compare(password, userObject.user?.password);
+      if (!userObject)
+        return { message: "Invalid credentials", status: "Fail" };
+      console.log("userObject", userObject);
+
+      const isMatch = await bcrypt.compare(
+        user.password,
+        userObject.user?.password,
+      );
       if (!isMatch) return { message: "Invalid credentials", status: "Fail" };
       return {
         user: userObject.user,
@@ -16,16 +25,23 @@ const login = async (req) => {
         message: "Login successful",
       };
     } catch (error) {
+      console.log(error);
       return { message: error.message, status: "Fail" };
     }
   }
 };
 
-const register = async () => {
+const register = async (req, res) => {
+  console.log("req", req);
   try {
-    const user = await User.create(req.body);
+    const user = await User.create({
+      username: req.username,
+      password: req.password,
+      email: req.email,
+    });
     return user;
   } catch (error) {
+    console.log(error);
     return { message: error.message, status: "Fail" };
   }
 };
@@ -38,4 +54,4 @@ const logout = async () => {
   }
 };
 
-export default { login };
+export default { login, register, logout };

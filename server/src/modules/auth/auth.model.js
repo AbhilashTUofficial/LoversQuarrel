@@ -3,7 +3,6 @@ import mangoose from "mongoose";
 const userSchema = new mangoose.Schema({
   username: {
     type: String,
-    required: true,
     unique: true,
   },
   password: {
@@ -12,11 +11,12 @@ const userSchema = new mangoose.Schema({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
   },
 });
 
 userSchema.index({ username: 1 }, { unique: true });
 
-export default userSchema;
+const User = mangoose.model("User", userSchema);
+
+export default User;
