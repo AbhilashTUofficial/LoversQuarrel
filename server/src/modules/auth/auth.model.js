@@ -15,8 +15,6 @@ const userSchema = new mangoose.Schema({
   },
 });
 
-userSchema.index({ username: 1 }, { unique: true });
-
 const User = mangoose.model("User", userSchema);
 
 export default User;

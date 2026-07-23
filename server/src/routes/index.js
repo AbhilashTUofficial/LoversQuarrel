@@ -1,11 +1,12 @@
 import { Router } from "express";
 import authRoutes from "../modules/auth/auth.routes.js";
+import gameRoutes from "../modules/game/game.routes.js";
+import aiRoutes from "../modules/ai/ai.routes.js";
 
 const router = new Router();
 
 router.use("/auth", authRoutes);
-// router.use("/game", require("./game.js"));
-// router.use("/game-settings", require("./game-settings.js"));
-// router.use("/ai", require("./ai.js"));
+router.use("/game", gameRoutes);
+router.use("/ai", aiRoutes);
 
 export default router;

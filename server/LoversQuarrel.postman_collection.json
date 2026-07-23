@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "LoversQuarrel API",
+    "_postman_id": "lq-collection-001",
+    "description": "API collection for the LoversQuarrel server. Base URL: http://localhost:5000/api/v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔐 Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"password\": \"securePass123\",\n  \"email\": \"alex@loversquarrel.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"password\": \"securePass123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/logout", "host": ["{{baseUrl}}"], "path": ["auth", "logout"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🎮 Game",
+      "item": [
+        {
+          "name": "Add All Game Settings",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/game/addAllGameSettings", "host": ["{{baseUrl}}"], "path": ["game", "addAllGameSettings"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"boyfriend\": {\n    \"username\": \"Boyfriend\",\n    \"id\": \"bf_001\",\n    \"initialArgument\": \"You never listen to me when I talk about my day!\",\n    \"traits\": {\n      \"intellect\": 72,\n      \"logic\": 65,\n      \"drama\": 40,\n      \"sarcasm\": 55,\n      \"stubborness\": 80,\n      \"confidence\": 70,\n      \"memory\": 60,\n      \"empathy\": 45\n    },\n    \"tags\": [\"stubborn\", \"logical\"],\n    \"chaosCards\": [\n      {\n        \"title\": \"Mic Drop\",\n        \"content\": \"Deliver an undeniable fact that silences the room.\",\n        \"isUsed\": false\n      }\n    ]\n  },\n  \"girlfriend\": {\n    \"username\": \"Girlfriend\",\n    \"id\": \"gf_001\",\n    \"initialArgument\": \"You spend more time with your friends than with me!\",\n    \"traits\": {\n      \"intellect\": 85,\n      \"logic\": 70,\n      \"drama\": 75,\n      \"sarcasm\": 60,\n      \"stubborness\": 65,\n      \"confidence\": 80,\n      \"memory\": 90,\n      \"empathy\": 88\n    },\n    \"tags\": [\"empathetic\", \"dramatic\"],\n    \"chaosCards\": [\n      {\n        \"title\": \"Receipts\",\n        \"content\": \"Pull out undeniable evidence from the past 3 months.\",\n        \"isUsed\": false\n      }\n    ]\n  },\n  \"argumentStack\": [],\n  \"caseDetails\": {\n    \"caseId\": \"case_001\",\n    \"caseTitle\": \"The Quality Time Dispute\",\n    \"caseDescription\": \"A classic conflict over how time is prioritized in the relationship.\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Set Initial Argument",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/game/setInitialArgument", "host": ["{{baseUrl}}"], "path": ["game", "setInitialArgument"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"boyfriend\": {\n    \"initialArgument\": \"I told you three times I had plans this weekend!\"\n  },\n  \"girlfriend\": {\n    \"initialArgument\": \"You said nothing of the sort — I checked my messages!\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Set Traits",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/game/setTraits", "host": ["{{baseUrl}}"], "path": ["game", "setTraits"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"boyfriendTraits\": {\n    \"intellect\": 78,\n    \"logic\": 70,\n    \"drama\": 35,\n    \"sarcasm\": 60,\n    \"stubborness\": 85,\n    \"confidence\": 75,\n    \"memory\": 55,\n    \"empathy\": 40\n  },\n  \"girlfriendTraits\": {\n    \"intellect\": 88,\n    \"logic\": 72,\n    \"drama\": 80,\n    \"sarcasm\": 65,\n    \"stubborness\": 60,\n    \"confidence\": 85,\n    \"memory\": 95,\n    \"empathy\": 90\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Append Argument — Boyfriend",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/game/appendArgument", "host": ["{{baseUrl}}"], "path": ["game", "appendArgument"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"argument\": {\n    \"id\": \"arg_001\",\n    \"content\": \"I literally told you about this trip two weeks ago!\",\n    \"type\": \"chat\",\n    \"time\": \"2026-07-24T12:00:00.000Z\",\n    \"from\": \"Boyfriend\",\n    \"to\": \"Girlfriend\",\n    \"username\": \"alex_bf\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Append Argument — Girlfriend (triggers system msg)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/game/appendArgument", "host": ["{{baseUrl}}"], "path": ["game", "appendArgument"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"argument\": {\n    \"id\": \"arg_002\",\n    \"content\": \"You mentioned it once while I was asleep — that doesn't count!\",\n    \"type\": \"chat\",\n    \"time\": \"2026-07-24T12:01:00.000Z\",\n    \"from\": \"Girlfriend\",\n    \"to\": \"Boyfriend\",\n    \"username\": \"alex_bf\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🤖 AI",
+      "item": [
+        {
+          "name": "Reformat Argument",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/ai/reformatArgument", "host": ["{{baseUrl}}"], "path": ["ai", "reformatArgument"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"argument\": \"you never take my feelings seriously and i'm tired of it\",\n  \"username\": \"alex_bf\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Generate System Chat",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/ai/generateSystemChat", "host": ["{{baseUrl}}"], "path": ["ai", "generateSystemChat"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_bf\",\n  \"argumentStack\": [\n    {\n      \"id\": \"arg_001\",\n      \"content\": \"I told you about the plans two weeks ago!\",\n      \"type\": \"chat\",\n      \"time\": \"2026-07-24T12:00:00.000Z\",\n      \"from\": \"Boyfriend\",\n      \"to\": \"Girlfriend\",\n      \"username\": \"alex_bf\"\n    },\n    {\n      \"id\": \"arg_002\",\n      \"content\": \"You only mentioned it once while I was half-asleep!\",\n      \"type\": \"chat\",\n      \"time\": \"2026-07-24T12:01:00.000Z\",\n      \"from\": \"Girlfriend\",\n      \"to\": \"Boyfriend\",\n      \"username\": \"alex_bf\"\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

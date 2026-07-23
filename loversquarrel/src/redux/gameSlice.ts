@@ -39,6 +39,13 @@ export type CaseDetails = {
   caseDescription: string;
 };
 
+export type ChaosCard = {
+  isActivated: boolean;
+  content: string;
+  title: string;
+  isUsed: boolean;
+};
+
 export type GameState = {
   gamemode: GameMode;
   game: {
@@ -59,11 +66,11 @@ export type GameState = {
       toxicityStat: number;
     };
     chaosCards: {
-      oldIncidentChaosCard: "activated" | "deactivated";
-      evidenceChaosCard: "activated" | "deactivated";
-      includeMomChaosCard: "activated" | "deactivated";
-      leaveOnReadChaosCard: "activated" | "deactivated";
-      bestFriendChaosCard: "activated" | "deactivated";
+      oldIncidentChaosCard: ChaosCard;
+      evidenceChaosCard: ChaosCard;
+      includeMomChaosCard: ChaosCard;
+      leaveOnReadChaosCard: ChaosCard;
+      bestFriendChaosCard: ChaosCard;
     };
     round: {
       roundNumber: number;
@@ -96,49 +103,57 @@ const initialState: GameState = {
     caseDetails: {
       caseId: "432432",
       caseTitle: "Why didn't you reply?",
-      caseDescription: "The argument started because boyfriend took 3 hours to reply to a text.",
+      caseDescription:
+        "The argument started because boyfriend took 3 hours to reply to a text.",
     },
     argumentStack: [
       {
         id: 1,
         from: "system",
-        content: "System: The couple started a conversation about their relationship.",
+        content:
+          "System: The couple started a conversation about their relationship.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 2,
         from: "Girlfriend",
-        content: "Hello, I'm girlfriend. I'm glad to see you again today. I hope you have a good day. How about a cup of coffee? I'll be waiting for you there.",
+        content:
+          "Hello, I'm girlfriend. I'm glad to see you again today. I hope you have a good day. How about a cup of coffee? I'll be waiting for you there.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 3,
         from: "Boyfriend",
-        content: "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
+        content:
+          "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 4,
         from: "system",
-        content: "System: The couple had a great day together. They enjoyed their coffee and talked about their future plans.",
+        content:
+          "System: The couple had a great day together. They enjoyed their coffee and talked about their future plans.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 5,
         from: "Girlfriend",
-        content: "I had a great day too. I'm looking forward to our future together. I love you.",
+        content:
+          "I had a great day too. I'm looking forward to our future together. I love you.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 6,
         from: "Boyfriend",
-        content: "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
+        content:
+          "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 7,
         from: "system",
-        content: "System: The couple's relationship is strong and healthy. They communicate well and support each other.",
+        content:
+          "System: The couple's relationship is strong and healthy. They communicate well and support each other.",
         timestamp: new Date().toISOString(),
       },
     ],
@@ -150,11 +165,36 @@ const initialState: GameState = {
       toxicityStat: 84,
     },
     chaosCards: {
-      oldIncidentChaosCard: "deactivated",
-      evidenceChaosCard: "deactivated",
-      includeMomChaosCard: "deactivated",
-      leaveOnReadChaosCard: "deactivated",
-      bestFriendChaosCard: "deactivated",
+      oldIncidentChaosCard: {
+        isActivated: false,
+        content: "Chaos Card: Old Incident",
+        title: "Old Incident",
+        isUsed: false,
+      },
+      evidenceChaosCard: {
+        isActivated: false,
+        content: "Chaos Card: Evidence",
+        title: "Evidence",
+        isUsed: false,
+      },
+      includeMomChaosCard: {
+        isActivated: false,
+        content: "Chaos Card: Include Mom",
+        title: "Include Mom",
+        isUsed: false,
+      },
+      leaveOnReadChaosCard: {
+        isActivated: false,
+        content: "Chaos Card: Leave on Read",
+        title: "Leave on Read",
+        isUsed: false,
+      },
+      bestFriendChaosCard: {
+        isActivated: false,
+        content: "Chaos Card: Best Friend",
+        title: "Best Friend",
+        isUsed: false,
+      },
     },
     round: {
       roundNumber: 7,
@@ -187,15 +227,20 @@ const gameSlice = createSlice({
     ) => {
       const { chaosCard, status } = action.payload;
       if (chaosCard in state.game.chaosCards) {
-        state.game.chaosCards[chaosCard] = status;
+        state.game.chaosCards[chaosCard] = {
+          ...state.game.chaosCards[chaosCard],
+          isActivated: status === "activated",
+        };
       }
     },
 
     toggleChaosCard: (state, action: PayloadAction<ChaosCardKeys>) => {
       const card = action.payload;
       if (card in state.game.chaosCards) {
-        state.game.chaosCards[card] =
-          state.game.chaosCards[card] === "activated" ? "deactivated" : "activated";
+        state.game.chaosCards[card] = {
+          ...state.game.chaosCards[card],
+          isActivated: !state.game.chaosCards[card].isActivated,
+        };
       }
     },
 
@@ -249,12 +294,18 @@ const gameSlice = createSlice({
     },
 
     adjustRelationshipHealth: (state, action: PayloadAction<number>) => {
-      const val = Math.max(0, Math.min(100, state.game.relationshipHealth + action.payload));
+      const val = Math.max(
+        0,
+        Math.min(100, state.game.relationshipHealth + action.payload),
+      );
       state.game.relationshipHealth = val;
       state.game.stats.relationshipHealth = val;
     },
 
-    setRound: (state, action: PayloadAction<{ roundNumber: number; roundStatus: string }>) => {
+    setRound: (
+      state,
+      action: PayloadAction<{ roundNumber: number; roundStatus: string }>,
+    ) => {
       state.game.round = action.payload;
     },
 
@@ -272,7 +323,10 @@ const gameSlice = createSlice({
 
     addArgument: (
       state,
-      action: PayloadAction<{ from: "Boyfriend" | "Girlfriend" | "system"; content: string }>,
+      action: PayloadAction<{
+        from: "Boyfriend" | "Girlfriend" | "system";
+        content: string;
+      }>,
     ) => {
       state.game.argumentStack.push({
         id: state.game.argumentStack.length + 1,
@@ -285,7 +339,13 @@ const gameSlice = createSlice({
       state.game.argumentStack = [];
     },
 
-    addPlayerTag: (state, action: PayloadAction<{ userType: "Boyfriend" | "Girlfriend"; tag: string }>) => {
+    addPlayerTag: (
+      state,
+      action: PayloadAction<{
+        userType: "Boyfriend" | "Girlfriend";
+        tag: string;
+      }>,
+    ) => {
       const { userType, tag } = action.payload;
       if (userType === "Boyfriend") {
         if (!state.game.boyfriendTags.includes(tag)) {
@@ -298,12 +358,22 @@ const gameSlice = createSlice({
       }
     },
 
-    removePlayerTag: (state, action: PayloadAction<{ userType: "Boyfriend" | "Girlfriend"; tag: string }>) => {
+    removePlayerTag: (
+      state,
+      action: PayloadAction<{
+        userType: "Boyfriend" | "Girlfriend";
+        tag: string;
+      }>,
+    ) => {
       const { userType, tag } = action.payload;
       if (userType === "Boyfriend") {
-        state.game.boyfriendTags = state.game.boyfriendTags.filter((t) => t !== tag);
+        state.game.boyfriendTags = state.game.boyfriendTags.filter(
+          (t) => t !== tag,
+        );
       } else if (userType === "Girlfriend") {
-        state.game.girlfriendTags = state.game.girlfriendTags.filter((t) => t !== tag);
+        state.game.girlfriendTags = state.game.girlfriendTags.filter(
+          (t) => t !== tag,
+        );
       }
     },
 
@@ -317,7 +387,13 @@ const gameSlice = createSlice({
       state.game.boyfriendTraits = { ...initialTraits };
       state.game.girlfriendTraits = { ...initialTraits };
       state.game.boyfriendTags = ["Logical", "Dramatic", "Sarcasm", "Stubborn"];
-      state.game.girlfriendTags = ["Logical", "Dramatic", "Sarcasm", "Stubborn", "Confident"];
+      state.game.girlfriendTags = [
+        "Logical",
+        "Dramatic",
+        "Sarcasm",
+        "Stubborn",
+        "Confident",
+      ];
       state.game.stats = {
         relationshipHealth: 100,
         relationshipStat: 72,
@@ -333,7 +409,8 @@ const gameSlice = createSlice({
         {
           id: 1,
           from: "system",
-          content: "System: The game has been reset. A new conversation started.",
+          content:
+            "System: The game has been reset. A new conversation started.",
           timestamp: new Date().toISOString(),
         },
       ];

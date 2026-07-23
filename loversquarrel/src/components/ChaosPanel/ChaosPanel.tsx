@@ -69,7 +69,7 @@ function ChaosPanel() {
                     <ChaosCard
                         key={card.id}
                         {...card}
-                        isActivated={chaosCardStates[card.reduxKey] === "activated"}
+                        isActivated={!!chaosCardStates[card.reduxKey]?.isActivated}
                         onToggle={handleToggle}
                     />
                 ))}
