@@ -10,10 +10,12 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    console.log("req.body", req.data);
     const user = await authService.login(req.body);
     res.send(user);
-  } catch (error) { }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal server error");
+  }
 };
 
 const logout = async (req, res) => {

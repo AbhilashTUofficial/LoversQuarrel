@@ -12,6 +12,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 dotenv.config();
 app.use("/api/v1", routes);

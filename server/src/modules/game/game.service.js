@@ -2,6 +2,7 @@ import gameSettings from "./game.model.js"
 
 const setInitialArgument = async (req, res) => {
     try {
+        console.log(req)
         const game = await gameSettings.findOne({ username: req.username });
         if (!game) {
             return { message: "Game settings not found", status: "Fail" };
