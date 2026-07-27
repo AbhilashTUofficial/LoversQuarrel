@@ -172,3 +172,18 @@
 .glowBlue {
   box-shadow: var(--shadow-blue);
 }
+
+.userLoggingOutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 400px;
+  height: 200px;
+}
+
+.userLoggingOut {
+  font-size: 16px;
+  font-weight: 600;
+}

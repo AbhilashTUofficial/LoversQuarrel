@@ -8,16 +8,22 @@ import { useState } from "react";
 import { setTraits } from "../../redux/gameSlice";
 import GirlfriendPanel from "../../components/PlayerPanel/GirlfriendPanel/GirlfriendPanel";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type { UserState } from "../../redux/userSlice";
+import useSetInitialArg from "../../hooks/useSetInitialArg";
 
 function Setup() {
     const gameSettings = useAppSelector((state) => state.game);
     const dispatch = useAppDispatch();
     const [isBfTabActive, setIsBfTabActive] = useState(gameSettings.game.currentUserType === "Boyfriend");
     const navigate = useNavigate();
+    const userData: UserState = useSelector((state: any) => state.user);
 
     const [bfArgument, setBfArgument] = useState("");
     const [gfArgument, setGfArgument] = useState("");
     const [isReformatting, setIsReformatting] = useState(false);
+
+    useSetInitialArg();
 
     const reformatArgumentText = async (text: string, userType: "Boyfriend" | "Girlfriend") => {
         if (!text.trim()) return;
@@ -136,49 +142,64 @@ function Setup() {
         ? [gameSettings.game.currentUserType]
         : ["Boyfriend", "Girlfriend"];
 
-    return (
-        <div className={`${style.setupContainer}`}>
-            <div className={`${baseStyle.glassCard} ${style.setupCard}`}>
-                <div className={style.setupHeader}>
-                    {gameSettings.gamemode === "ai" ? (
-                        <div className={style.headerTxt}>Configure AI</div>
-                    ) : (
-                        <div className={style.headerTxt}>Configure {gameSettings.game.currentUserType}</div>
-                    )}
-                </div>
-                <div className={style.content}>
-                    <Tabs className={style.tabs}>
-                        <div className={style.tabsHeader}>
-                            <TabList className={style.tabList}>
-                                {tabs.map((tab) => (
-                                    <Tab
-                                        key={tab}
-                                        onClick={() => setIsBfTabActive(tab === "Boyfriend")}
-                                        className={`${style.tab} `}
-                                        selectedClassName={`${tab === "Girlfriend" ? style.gfTab : style.bfTab} ${style.activeTab}`}
-                                    >
-                                        {tab}
-                                    </Tab>
-                                ))}
-                            </TabList>
-                            <button onClick={configure} className={`${style.configureBtn}`}>Configure</button>
-                        </div>
+    if (userData.loggedin) {
+        return (
+            <div className={`${style.setupContainer}`}>
+                <div className={`${baseStyle.glassCard} ${style.setupCard}`}>
+                    <div className={style.setupHeader}>
+                        {gameSettings.gamemode === "ai" ? (
+                            <div className={style.headerTxt}>Configure AI</div>
+                        ) : (
+                            <div className={style.headerTxt}>Configure {gameSettings.game.currentUserType}</div>
+                        )}
+                    </div>
+                    <div className={style.content}>
+                        <Tabs className={style.tabs}>
+                            <div className={style.tabsHeader}>
+                                <TabList className={style.tabList}>
+                                    {tabs.map((tab) => (
+                                        <Tab
+                                            key={tab}
+                                            onClick={() => setIsBfTabActive(tab === "Boyfriend")}
+                                            className={`${style.tab} `}
+                                            selectedClassName={`${tab === "Girlfriend" ? style.gfTab : style.bfTab} ${style.activeTab}`}
+                                        >
+                                            {tab}
+                                        </Tab>
+                                    ))}
+                                </TabList>
+                                <button onClick={configure} className={`${style.configureBtn}`}>Configure</button>
+                            </div>
 
-                        {tabs.map((tab) => (
-                            <TabPanel
-                                key={tab}
-                                className={style.tabPanel}
-                                selectedClassName={style.activePanel}
-                            >
-                                <ArgumentInput />
-                                <ChaosPanel />
-                            </TabPanel>
-                        ))}
-                    </Tabs>
+                            {tabs.map((tab) => (
+                                <TabPanel
+                                    key={tab}
+                                    className={style.tabPanel}
+                                    selectedClassName={style.activePanel}
+                                >
+                                    <ArgumentInput />
+                                    <ChaosPanel />
+                                </TabPanel>
+                            ))}
+                        </Tabs>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
+    else {
+        setTimeout(() => {
+            navigate("/")
+        }, 500)
+        return (
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+                <div className={[baseStyle.userLoggingOutContainer, baseStyle.glassCard].join(' ')}>
+                    <div className={baseStyle.userLoggingOut}>User logging out...</div>
+                </div>
+            </div>
+        )
+    }
+
 }
 
 export default Setup;

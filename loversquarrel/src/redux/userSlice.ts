@@ -40,6 +40,9 @@ const userSlice = createSlice({
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    setUserLoggedIn: (state, action: PayloadAction<boolean>) => {
+      state.loggedin = action.payload;
+    },
     logout: (state) => {
       state.username = null;
       state.usertoken = null;
@@ -57,6 +60,7 @@ export const {
   setUsername,
   setUserDetails,
   setLoading,
+  setUserLoggedIn,
   logout,
 } = userSlice.actions;
 
