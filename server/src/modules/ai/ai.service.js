@@ -1,28 +1,14 @@
 import AiPromptLog from "./ai.model.js";
 
-const reformatArgument = async (argumentData) => {
+const getReformattedArgument = async (argumentData) => {
     try {
-        const { argument, username = "anonymous" } = argumentData;
-        let reformatted = argument.trim();
-        if (reformatted.length > 0) {
-            reformatted = reformatted.charAt(0).toUpperCase() + reformatted.slice(1);
-            if (!/[.!?]$/.test(reformatted)) {
-                reformatted += '.';
-            }
-        }
-
-        AiPromptLog.create({
-            username,
-            promptType: "reformatArgument",
-            inputText: argument,
-            outputText: reformatted
-        }).catch(err => console.log("AiPromptLog non-fatal error:", err.message));
+        argumentData.argument;
+        console.log(argumentData)
 
         return {
-            original: argument,
-            reformatted,
-            status: "Success"
-        };
+            argument: `${argumentData.boyfriend.initialArgument} [Refined]`
+        }
+
     } catch (error) {
         console.error("Error in reformatArgument service:", error);
         return { message: error.message, status: "Fail" };
@@ -55,4 +41,29 @@ const generateSystemChat = async (chatData) => {
     }
 };
 
-export default { reformatArgument, generateSystemChat };
+const getInitialTraits = async (traitData) => {
+    try {
+        const argument = traitData.argument;
+        const tags = traitData.tags;
+        // TODO: need to implement the ai part here.
+        return {
+            traits: {
+                intellect: 50,
+                logic: 50,
+                drama: 50,
+                sarcasm: 50,
+                stubbornness: 50,
+                confidence: 50,
+                memory: 50,
+                empathy: 50
+            },
+            status: "Success"
+        }
+
+    } catch (error) {
+        console.error("Error in getInitialTraits service:", error);
+        return { message: error.message, status: "Fail" };
+    }
+};
+
+export default { getReformattedArgument, generateSystemChat, getInitialTraits };

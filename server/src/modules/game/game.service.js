@@ -29,8 +29,8 @@ const setTraits = async (req, res) => {
         if (!game) {
             return { message: "Game settings not found", status: "Fail" };
         }
-        if (req.boyfriendTraits || req.traits?.boyfriend) game.boyfriend.traits = req.boyfriendTraits || req.traits?.boyfriend;
-        if (req.girlfriendTraits || req.traits?.girlfriend) game.girlfriend.traits = req.girlfriendTraits || req.traits?.girlfriend;
+        if (req.traits || req.traits?.boyfriend) game.boyfriend.traits = req.traits?.boyfriend.traits;
+        if (req.traits || req.traits?.girlfriend) game.girlfriend.traits = req.traits?.girlfriend.traits;
         await game.save();
         return game;
     } catch (error) {
