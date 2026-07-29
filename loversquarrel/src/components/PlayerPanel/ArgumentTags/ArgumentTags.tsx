@@ -3,14 +3,18 @@ import baseStyle from "../../../base.module.css";
 
 import { Info, X } from "lucide-react";
 import type { ArgumentTagsProps } from "./types";
+import { useSelector } from "react-redux";
 
-function ArgumentTags({ isBoyfriend, activeTags, onAddTag, onRemoveTag }: ArgumentTagsProps) {
+function ArgumentTags({ isBoyfriend, onAddTag, onRemoveTag }: ArgumentTagsProps) {
     const handleAddTag = () => {
         const tag = prompt("Enter a new tag:");
         if (tag && tag.trim().length > 0) {
             onAddTag(tag.trim());
         }
     };
+
+    const userData = useSelector((state: any) => state.game);
+    const activeTags: string[] = isBoyfriend ? userData.game.boyfriend.tags : userData.game.girlfriend.tags;
 
     return (
         <div className={styles.activeTagContainer}>

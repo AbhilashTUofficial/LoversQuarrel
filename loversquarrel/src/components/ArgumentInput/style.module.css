@@ -1,0 +1,88 @@
+.argumentCont {
+  display: grid;
+  gap: 16px;
+  grid-template-areas:
+    "argument argument traits"
+    "genbtn genbtn genbtn";
+  margin: 12px;
+}
+
+@media (max-width: 1100px) {
+  .argumentCont {
+    grid-template-areas:
+      "argument"
+      "traits"
+      "genbtn";
+  }
+}
+
+.argumentInputContainer {
+  position: relative;
+  grid-area: argument;
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  resize: none;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+.argumentInput {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  resize: none;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+.argumentInput:focus {
+  outline: none;
+}
+
+.reformatBtn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  grid-area: genbtn;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+  background-color: rgba(250, 250, 250, 0.06);
+}
+
+.argumentBtn {
+  grid-area: genbtn;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+.bfArgumentBtn {
+  background-color: var(--bf-secondary);
+}
+
+.gfArgumentBtn {
+  background-color: var(--gf-secondary);
+}
+
+.traitsContainer {
+  grid-area: traits;
+}

@@ -2,8 +2,15 @@ import styles from "./style.module.css";
 import baseStyle from "../../../base.module.css";
 import { Info } from "lucide-react";
 import type { PlayerTraitsProps, TraitRow } from "./types";
+import { useSelector } from "react-redux";
+import type { Traits } from "../../../redux/types";
 
-function PlayerTraits({ traits, isBoyfriend, gameMode }: PlayerTraitsProps) {
+function PlayerTraits({ isBoyfriend, gameMode }: PlayerTraitsProps) {
+
+
+    const userData = useSelector((state: any) => state.game);
+    const traits: Traits = isBoyfriend ? userData.game.boyfriend.traits : userData.game.girlfriend.traits;
+
     const traitRows: TraitRow[] = [
         { name: "🧠 Intellect", value: traits.intellect },
         { name: "⚖️ Logic", value: traits.logic },

@@ -1,83 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-export type ChaosCardKeys =
-  | "oldIncidentChaosCard"
-  | "evidenceChaosCard"
-  | "includeMomChaosCard"
-  | "leaveOnReadChaosCard"
-  | "bestFriendChaosCard";
-
-export type StatsKeys =
-  | "relationshipStat"
-  | "dramaStat"
-  | "logicStat"
-  | "toxicityStat";
-
-export type Traits = {
-  intellect: number;
-  logic: number;
-  drama: number;
-  sarcasm: number;
-  stubbornness: number;
-  confidence: number;
-  memory: number;
-  empathy: number;
-};
-
-export type GameMode = "ai" | "dual" | "solo";
-
-export type Argument = {
-  id: number;
-  from: "Boyfriend" | "Girlfriend" | "system";
-  content: string;
-  timestamp: string; // Serialized date representation for Redux
-};
-
-export type CaseDetails = {
-  caseId: string;
-  caseTitle: string;
-  caseDescription: string;
-};
-
-export type ChaosCard = {
-  isActivated: boolean;
-  content: string;
-  title: string;
-  isUsed: boolean;
-};
-
-export type GameState = {
-  gamemode: GameMode;
-  game: {
-    currentUserType: "Boyfriend" | "Girlfriend";
-    gameStarted: boolean;
-    relationshipHealth: number;
-    boyfriendTraits: Traits;
-    girlfriendTraits: Traits;
-    boyfriendTags: string[];
-    girlfriendTags: string[];
-    caseDetails: CaseDetails;
-    argumentStack: Argument[];
-    stats: {
-      relationshipHealth: number;
-      relationshipStat: number;
-      dramaStat: number;
-      logicStat: number;
-      toxicityStat: number;
-    };
-    chaosCards: {
-      oldIncidentChaosCard: ChaosCard;
-      evidenceChaosCard: ChaosCard;
-      includeMomChaosCard: ChaosCard;
-      leaveOnReadChaosCard: ChaosCard;
-      bestFriendChaosCard: ChaosCard;
-    };
-    round: {
-      roundNumber: number;
-      roundStatus: string;
-    };
-  };
-};
+import type {
+  Traits,
+  GameState,
+  GameMode,
+  ChaosCardKeys,
+  StatsKeys,
+  CaseDetails,
+  Argument,
+} from "./types";
 
 const initialTraits: Traits = {
   intellect: 0,
@@ -95,17 +25,118 @@ const initialState: GameState = {
   game: {
     currentUserType: "Girlfriend",
     gameStarted: false,
-    relationshipHealth: 100,
-    boyfriendTraits: { ...initialTraits },
-    girlfriendTraits: { ...initialTraits },
-    boyfriendTags: ["Logical", "Dramatic", "Sarcasm", "Stubborn"],
-    girlfriendTags: ["Logical", "Dramatic", "Sarcasm", "Stubborn", "Confident"],
-    caseDetails: {
-      caseId: "432432",
-      caseTitle: "Why didn't you reply?",
-      caseDescription:
-        "The argument started because boyfriend took 3 hours to reply to a text.",
+    stats: {
+      relationshipHealth: 0,
+      relationshipStat: 0,
+      dramaStat: 0,
+      logicStat: 0,
+      toxicityStat: 0,
+      round: {
+        roundNumber: 7,
+        roundStatus: "Heated 🔥",
+      },
+      caseDetails: {
+        caseId: "432432",
+        caseTitle: "Why didn't you reply?",
+        caseDescription:
+          "The argument started because boyfriend took 3 hours to reply to a text.",
+      },
     },
+    boyfriend: {
+      initialArgument: {
+        id: "001",
+        from: "Boyfriend",
+        content: "",
+        timestamp: new Date().toISOString(),
+      },
+      traits: { ...initialTraits },
+      tags: ["Logical", "Dramatic", "Sarcasm", "Stubborn"],
+      chaosCards: {
+        oldIncidentChaosCard: {
+          id: "oldIncidentChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Old Incident",
+          title: "Old Incident",
+          isUsed: false,
+        },
+        evidenceChaosCard: {
+          id: "evidenceChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Evidence",
+          title: "Evidence",
+          isUsed: false,
+        },
+        includeMomChaosCard: {
+          id: "includeMomChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Include Mom",
+          title: "Include Mom",
+          isUsed: false,
+        },
+        leaveOnReadChaosCard: {
+          id: "leaveOnReadChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Leave on Read",
+          title: "Leave on Read",
+          isUsed: false,
+        },
+        bestFriendChaosCard: {
+          id: "bestFriendChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Best Friend",
+          title: "Best Friend",
+          isUsed: false,
+        },
+      },
+    },
+    girlfriend: {
+      initialArgument: {
+        id: "001",
+        from: "Girlfriend",
+        content: "",
+        timestamp: new Date().toISOString(),
+      },
+      traits: { ...initialTraits },
+      tags: ["Logical", "Dramatic", "Sarcasm", "Stubborn", "Confident"],
+      chaosCards: {
+        oldIncidentChaosCard: {
+          id: "oldIncidentChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Old Incident",
+          title: "Old Incident",
+          isUsed: false,
+        },
+        evidenceChaosCard: {
+          id: "evidenceChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Evidence",
+          title: "Evidence",
+          isUsed: false,
+        },
+        includeMomChaosCard: {
+          id: "includeMomChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Include Mom",
+          title: "Include Mom",
+          isUsed: false,
+        },
+        leaveOnReadChaosCard: {
+          id: "leaveOnReadChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Leave on Read",
+          title: "Leave on Read",
+          isUsed: false,
+        },
+        bestFriendChaosCard: {
+          id: "bestFriendChaosCard",
+          isActivated: false,
+          content: "Chaos Card: Best Friend",
+          title: "Best Friend",
+          isUsed: false,
+        },
+      },
+    },
+
     argumentStack: [
       {
         id: 1,
@@ -157,49 +188,6 @@ const initialState: GameState = {
         timestamp: new Date().toISOString(),
       },
     ],
-    stats: {
-      relationshipHealth: 100,
-      relationshipStat: 72,
-      dramaStat: 91,
-      logicStat: 22,
-      toxicityStat: 84,
-    },
-    chaosCards: {
-      oldIncidentChaosCard: {
-        isActivated: false,
-        content: "Chaos Card: Old Incident",
-        title: "Old Incident",
-        isUsed: false,
-      },
-      evidenceChaosCard: {
-        isActivated: false,
-        content: "Chaos Card: Evidence",
-        title: "Evidence",
-        isUsed: false,
-      },
-      includeMomChaosCard: {
-        isActivated: false,
-        content: "Chaos Card: Include Mom",
-        title: "Include Mom",
-        isUsed: false,
-      },
-      leaveOnReadChaosCard: {
-        isActivated: false,
-        content: "Chaos Card: Leave on Read",
-        title: "Leave on Read",
-        isUsed: false,
-      },
-      bestFriendChaosCard: {
-        isActivated: false,
-        content: "Chaos Card: Best Friend",
-        title: "Best Friend",
-        isUsed: false,
-      },
-    },
-    round: {
-      roundNumber: 7,
-      roundStatus: "Heated 🔥",
-    },
   },
 };
 
@@ -222,26 +210,35 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{
         chaosCard: ChaosCardKeys;
+        userType: "Boyfriend" | "Girlfriend";
         status: "activated" | "deactivated";
       }>,
     ) => {
-      const { chaosCard, status } = action.payload;
-      if (chaosCard in state.game.chaosCards) {
-        state.game.chaosCards[chaosCard] = {
-          ...state.game.chaosCards[chaosCard],
+      const { chaosCard, userType, status } = action.payload;
+      if (userType === "Boyfriend") {
+        state.game.boyfriend.chaosCards[chaosCard] = {
+          id: chaosCard,
           isActivated: status === "activated",
+          content: `Chaos Card: ${chaosCard}`,
+          title: chaosCard,
+          isUsed: false,
         };
       }
     },
 
-    toggleChaosCard: (state, action: PayloadAction<ChaosCardKeys>) => {
-      const card = action.payload;
-      if (card in state.game.chaosCards) {
-        state.game.chaosCards[card] = {
-          ...state.game.chaosCards[card],
-          isActivated: !state.game.chaosCards[card].isActivated,
-        };
-      }
+    toggleChaosCard: (
+      state,
+      action: PayloadAction<{
+        card: ChaosCardKeys;
+        userType: "Boyfriend" | "Girlfriend";
+      }>,
+    ) => {
+      const { card, userType } = action.payload;
+
+      const player =
+        userType === "Boyfriend" ? state.game.boyfriend : state.game.girlfriend;
+
+      player.chaosCards[card].isActivated = true;
     },
 
     setStats: (
@@ -275,30 +272,21 @@ const gameSlice = createSlice({
     setTraits: (
       state,
       action: PayloadAction<{
-        trait: Traits;
+        traits: Traits;
         userType: "Boyfriend" | "Girlfriend";
       }>,
     ) => {
-      const { trait, userType } = action.payload;
+      const { traits, userType } = action.payload;
       if (userType === "Boyfriend") {
-        state.game.boyfriendTraits = trait;
-      } else if (userType === "Girlfriend") {
-        state.game.girlfriendTraits = trait;
+        state.game.boyfriend.traits = traits;
+      }
+      if (userType === "Girlfriend") {
+        state.game.girlfriend.traits = traits;
       }
     },
 
     setRelationshipHealth: (state, action: PayloadAction<number>) => {
       const val = Math.max(0, Math.min(100, action.payload));
-      state.game.relationshipHealth = val;
-      state.game.stats.relationshipHealth = val;
-    },
-
-    adjustRelationshipHealth: (state, action: PayloadAction<number>) => {
-      const val = Math.max(
-        0,
-        Math.min(100, state.game.relationshipHealth + action.payload),
-      );
-      state.game.relationshipHealth = val;
       state.game.stats.relationshipHealth = val;
     },
 
@@ -306,19 +294,21 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{ roundNumber: number; roundStatus: string }>,
     ) => {
-      state.game.round = action.payload;
-    },
-
-    incrementRound: (state) => {
-      state.game.round.roundNumber += 1;
-    },
-
-    setRoundStatus: (state, action: PayloadAction<string>) => {
-      state.game.round.roundStatus = action.payload;
+      state.game.stats.round = action.payload;
     },
 
     setCase: (state, action: PayloadAction<CaseDetails>) => {
-      state.game.caseDetails = action.payload;
+      state.game.stats.caseDetails = action.payload;
+    },
+
+    setInitialArgument: (state, action: PayloadAction<Argument>) => {
+      const argument = action.payload;
+      if (argument.from == "Boyfriend") {
+        state.game.boyfriend.initialArgument = argument;
+      }
+      if (argument.from == "Girlfriend") {
+        state.game.girlfriend.initialArgument = argument;
+      }
     },
 
     addArgument: (
@@ -348,12 +338,12 @@ const gameSlice = createSlice({
     ) => {
       const { userType, tag } = action.payload;
       if (userType === "Boyfriend") {
-        if (!state.game.boyfriendTags.includes(tag)) {
-          state.game.boyfriendTags.push(tag);
+        if (!state.game.boyfriend.tags.includes(tag)) {
+          state.game.boyfriend.tags.push(tag);
         }
       } else if (userType === "Girlfriend") {
-        if (!state.game.girlfriendTags.includes(tag)) {
-          state.game.girlfriendTags.push(tag);
+        if (!state.game.girlfriend.tags.includes(tag)) {
+          state.game.girlfriend.tags.push(tag);
         }
       }
     },
@@ -367,11 +357,11 @@ const gameSlice = createSlice({
     ) => {
       const { userType, tag } = action.payload;
       if (userType === "Boyfriend") {
-        state.game.boyfriendTags = state.game.boyfriendTags.filter(
+        state.game.boyfriend.tags = state.game.boyfriend.tags.filter(
           (t) => t !== tag,
         );
       } else if (userType === "Girlfriend") {
-        state.game.girlfriendTags = state.game.girlfriendTags.filter(
+        state.game.girlfriend.tags = state.game.girlfriend.tags.filter(
           (t) => t !== tag,
         );
       }
@@ -381,40 +371,7 @@ const gameSlice = createSlice({
       state.game.gameStarted = true;
     },
 
-    resetGame: (state) => {
-      state.game.gameStarted = false;
-      state.game.relationshipHealth = 100;
-      state.game.boyfriendTraits = { ...initialTraits };
-      state.game.girlfriendTraits = { ...initialTraits };
-      state.game.boyfriendTags = ["Logical", "Dramatic", "Sarcasm", "Stubborn"];
-      state.game.girlfriendTags = [
-        "Logical",
-        "Dramatic",
-        "Sarcasm",
-        "Stubborn",
-        "Confident",
-      ];
-      state.game.stats = {
-        relationshipHealth: 100,
-        relationshipStat: 72,
-        dramaStat: 91,
-        logicStat: 22,
-        toxicityStat: 84,
-      };
-      state.game.round = {
-        roundNumber: 1,
-        roundStatus: "Chill ❄️",
-      };
-      state.game.argumentStack = [
-        {
-          id: 1,
-          from: "system",
-          content:
-            "System: The game has been reset. A new conversation started.",
-          timestamp: new Date().toISOString(),
-        },
-      ];
-    },
+    resetGame: (state) => {},
   },
 });
 
@@ -426,10 +383,7 @@ export const {
   updateStats,
   setTraits,
   setRelationshipHealth,
-  adjustRelationshipHealth,
   setRound,
-  incrementRound,
-  setRoundStatus,
   setCurrentUserType,
   setCase,
   addArgument,
@@ -438,6 +392,7 @@ export const {
   removePlayerTag,
   startGame,
   resetGame,
+  setInitialArgument,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

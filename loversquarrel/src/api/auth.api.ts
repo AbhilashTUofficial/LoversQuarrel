@@ -1,5 +1,4 @@
 import { api } from "./client";
-import type { argument } from "./type";
 
 export const login = (username: string, password: string) => {
   try {
@@ -15,8 +14,4 @@ export const register = (username: string, password: string) => {
 
 export const logout = () => {
   return api.post("/auth/logout");
-};
-
-export const setInitialArgument = (argument: argument) => {
-  return api.post("/game/setInitialArgument", { argument });
 };

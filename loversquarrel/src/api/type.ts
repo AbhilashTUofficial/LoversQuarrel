@@ -1,3 +1,5 @@
+import type { Traits } from "../redux/types";
+
 export type argument = {
   username: string;
   boyfriend?: {
@@ -6,4 +8,22 @@ export type argument = {
   girlfriend?: {
     initialArgument: string;
   };
+};
+
+export type traits = {
+  username: string;
+  traits: {
+    boyfriend?: {
+      traits: Traits;
+    };
+    girlfriend?: {
+      traits: Traits;
+    };
+  };
+};
+
+export type getInitalTraits = {
+  username: string;
+  argument: string;
+  tags: string[];
 };

@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { setInitialArgument } from "../api/auth.api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import type { argument } from "../api/type";
+import { postInitialArgument } from "../api/game.api";
 
 const useSetInitialArg = () => {
-  return useQuery({
-    queryKey: ["setInitialArgument"],
-    queryFn: () =>
-      setInitialArgument({
-        username: "defaultUser",
-        boyfriend: { initialArgument: "I am a boyfriend" },
-        girlfriend: { initialArgument: "I am a girlfriend" },
-      }),
+  return useMutation({
+    mutationKey: ["setInitialArgument"],
+    mutationFn: (argument: argument) => postInitialArgument(argument),
   });
 };
 

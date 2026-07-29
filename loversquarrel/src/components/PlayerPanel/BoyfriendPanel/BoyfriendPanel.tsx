@@ -29,13 +29,11 @@ function BoyfriendPanel() {
 
             <div className={baseStyle.playerPanelContent}>
                 <PlayerTraits
-                    traits={boyfriendTraits}
                     isBoyfriend={true}
                     gameMode={gameSettings.gamemode}
                 />
 
                 <ArgumentTags
-                    activeTags={activeTags}
                     isBoyfriend={true}
                     onAddTag={handleAddTag}
                     onRemoveTag={handleRemoveTag}
