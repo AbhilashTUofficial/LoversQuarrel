@@ -97,7 +97,7 @@
   border-radius: 0 0 0 12px;
 } */
 
-.Girlfriend {
+.girlfriend {
   background-color: var(--gf-secondary);
   border: 1px solid var(--gf-primary);
   color: var(--text-primary);

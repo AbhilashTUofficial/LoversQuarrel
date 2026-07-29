@@ -23,7 +23,7 @@ const initialTraits: Traits = {
 const initialState: GameState = {
   gamemode: "ai",
   game: {
-    currentUserType: "Girlfriend",
+    currentUserType: "girlfriend",
     gameStarted: false,
     stats: {
       relationshipHealth: 0,
@@ -45,7 +45,7 @@ const initialState: GameState = {
     boyfriend: {
       initialArgument: {
         id: "001",
-        from: "Boyfriend",
+        from: "boyfriend",
         content: "",
         timestamp: new Date().toISOString(),
       },
@@ -92,7 +92,7 @@ const initialState: GameState = {
     girlfriend: {
       initialArgument: {
         id: "001",
-        from: "Girlfriend",
+        from: "girlfriend",
         content: "",
         timestamp: new Date().toISOString(),
       },
@@ -147,14 +147,14 @@ const initialState: GameState = {
       },
       {
         id: 2,
-        from: "Girlfriend",
+        from: "girlfriend",
         content:
           "Hello, I'm girlfriend. I'm glad to see you again today. I hope you have a good day. How about a cup of coffee? I'll be waiting for you there.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 3,
-        from: "Boyfriend",
+        from: "boyfriend",
         content:
           "Hi, I'm boyfriend. I'm happy to see you too. I had a great day. Coffee sounds good. I'll be there in 10 minutes.",
         timestamp: new Date().toISOString(),
@@ -168,14 +168,14 @@ const initialState: GameState = {
       },
       {
         id: 5,
-        from: "Girlfriend",
+        from: "girlfriend",
         content:
           "I had a great day too. I'm looking forward to our future together. I love you.",
         timestamp: new Date().toISOString(),
       },
       {
         id: 6,
-        from: "Boyfriend",
+        from: "boyfriend",
         content:
           "I love you too. I'm grateful to have you in my life. Let's make more wonderful memories together.",
         timestamp: new Date().toISOString(),
@@ -201,7 +201,7 @@ const gameSlice = createSlice({
 
     setCurrentUserType: (
       state,
-      action: PayloadAction<"Boyfriend" | "Girlfriend">,
+      action: PayloadAction<"boyfriend" | "girlfriend">,
     ) => {
       state.game.currentUserType = action.payload;
     },
@@ -210,12 +210,12 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{
         chaosCard: ChaosCardKeys;
-        userType: "Boyfriend" | "Girlfriend";
+        userType: "boyfriend" | "girlfriend";
         status: "activated" | "deactivated";
       }>,
     ) => {
       const { chaosCard, userType, status } = action.payload;
-      if (userType === "Boyfriend") {
+      if (userType === "boyfriend") {
         state.game.boyfriend.chaosCards[chaosCard] = {
           id: chaosCard,
           isActivated: status === "activated",
@@ -230,13 +230,13 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{
         card: ChaosCardKeys;
-        userType: "Boyfriend" | "Girlfriend";
+        userType: "boyfriend" | "girlfriend";
       }>,
     ) => {
       const { card, userType } = action.payload;
 
       const player =
-        userType === "Boyfriend" ? state.game.boyfriend : state.game.girlfriend;
+        userType === "boyfriend" ? state.game.boyfriend : state.game.girlfriend;
 
       player.chaosCards[card].isActivated = true;
     },
@@ -273,14 +273,14 @@ const gameSlice = createSlice({
       state,
       action: PayloadAction<{
         traits: Traits;
-        userType: "Boyfriend" | "Girlfriend";
+        userType: "boyfriend" | "girlfriend";
       }>,
     ) => {
       const { traits, userType } = action.payload;
-      if (userType === "Boyfriend") {
+      if (userType === "boyfriend") {
         state.game.boyfriend.traits = traits;
       }
-      if (userType === "Girlfriend") {
+      if (userType === "girlfriend") {
         state.game.girlfriend.traits = traits;
       }
     },
@@ -303,10 +303,10 @@ const gameSlice = createSlice({
 
     setInitialArgument: (state, action: PayloadAction<Argument>) => {
       const argument = action.payload;
-      if (argument.from == "Boyfriend") {
+      if (argument.from == "boyfriend") {
         state.game.boyfriend.initialArgument = argument;
       }
-      if (argument.from == "Girlfriend") {
+      if (argument.from == "girlfriend") {
         state.game.girlfriend.initialArgument = argument;
       }
     },
@@ -314,7 +314,7 @@ const gameSlice = createSlice({
     addArgument: (
       state,
       action: PayloadAction<{
-        from: "Boyfriend" | "Girlfriend" | "system";
+        from: "boyfriend" | "girlfriend" | "system";
         content: string;
       }>,
     ) => {
@@ -332,16 +332,16 @@ const gameSlice = createSlice({
     addPlayerTag: (
       state,
       action: PayloadAction<{
-        userType: "Boyfriend" | "Girlfriend";
+        userType: "boyfriend" | "girlfriend";
         tag: string;
       }>,
     ) => {
       const { userType, tag } = action.payload;
-      if (userType === "Boyfriend") {
+      if (userType === "boyfriend") {
         if (!state.game.boyfriend.tags.includes(tag)) {
           state.game.boyfriend.tags.push(tag);
         }
-      } else if (userType === "Girlfriend") {
+      } else if (userType === "girlfriend") {
         if (!state.game.girlfriend.tags.includes(tag)) {
           state.game.girlfriend.tags.push(tag);
         }
@@ -351,16 +351,16 @@ const gameSlice = createSlice({
     removePlayerTag: (
       state,
       action: PayloadAction<{
-        userType: "Boyfriend" | "Girlfriend";
+        userType: "boyfriend" | "girlfriend";
         tag: string;
       }>,
     ) => {
       const { userType, tag } = action.payload;
-      if (userType === "Boyfriend") {
+      if (userType === "boyfriend") {
         state.game.boyfriend.tags = state.game.boyfriend.tags.filter(
           (t) => t !== tag,
         );
-      } else if (userType === "Girlfriend") {
+      } else if (userType === "girlfriend") {
         state.game.girlfriend.tags = state.game.girlfriend.tags.filter(
           (t) => t !== tag,
         );
@@ -370,8 +370,6 @@ const gameSlice = createSlice({
     startGame: (state) => {
       state.game.gameStarted = true;
     },
-
-    resetGame: (state) => {},
   },
 });
 
@@ -391,7 +389,6 @@ export const {
   addPlayerTag,
   removePlayerTag,
   startGame,
-  resetGame,
   setInitialArgument,
 } = gameSlice.actions;
 

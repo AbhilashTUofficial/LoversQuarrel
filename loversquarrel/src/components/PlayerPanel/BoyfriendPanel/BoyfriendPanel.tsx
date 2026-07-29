@@ -5,20 +5,17 @@ import PlayerTraits from "../PlayerTraits/PlayerTraits";
 import ArgumentTags from "../ArgumentTags/ArgumentTags";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { addPlayerTag, removePlayerTag } from "../../../redux/gameSlice";
-import type { Traits } from "./types";
 
 function BoyfriendPanel() {
     const dispatch = useAppDispatch();
     const gameSettings = useAppSelector((state) => state.game);
-    const boyfriendTraits: Traits = gameSettings.game.boyfriendTraits;
-    const activeTags: string[] = gameSettings.game.boyfriendTags;
 
     const handleAddTag = (tag: string) => {
-        dispatch(addPlayerTag({ userType: "Boyfriend", tag }));
+        dispatch(addPlayerTag({ userType: "boyfriend", tag }));
     };
 
     const handleRemoveTag = (tag: string) => {
-        dispatch(removePlayerTag({ userType: "Boyfriend", tag }));
+        dispatch(removePlayerTag({ userType: "boyfriend", tag }));
     };
 
     return (

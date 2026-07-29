@@ -15,33 +15,33 @@ function Home() {
 
 
     const onClickBoyfriend = () => {
-        dispatch(setUserToken("Boyfriend"));
-        dispatch(setUserType("Boyfriend"));
-        dispatch(setCurrentUserType("Boyfriend"));
+        dispatch(setUserToken("boyfriend"));
+        dispatch(setUserType("boyfriend"));
+        dispatch(setCurrentUserType("boyfriend"));
         dispatch(setGameMode("solo"));
         navigate('/setup');
     }
 
     const onClickGirlfriend = () => {
-        dispatch(setUserToken("Girlfriend"));
-        dispatch(setUserType("Girlfriend"));
-        dispatch(setCurrentUserType("Girlfriend"));
+        dispatch(setUserToken("girlfriend"));
+        dispatch(setUserType("girlfriend"));
+        dispatch(setCurrentUserType("girlfriend"));
         dispatch(setGameMode("solo"));
         navigate('/setup');
     }
 
     const onClickDual = () => {
         dispatch(setUserToken('dual'));
-        dispatch(setUserType("Girlfriend"));
+        dispatch(setUserType("girlfriend"));
         dispatch(setGameMode("dual"));
-        dispatch(setCurrentUserType("Girlfriend"));
+        dispatch(setCurrentUserType("girlfriend"));
         navigate('/setup');
     }
 
     const onClickAIMode = () => {
         dispatch(setUserToken('dual'));
-        dispatch(setUserType("Girlfriend"));
-        dispatch(setCurrentUserType("Girlfriend"));
+        dispatch(setUserType("girlfriend"));
+        dispatch(setCurrentUserType("girlfriend"));
         dispatch(setGameMode("ai"));
         navigate('/setup');
     }
@@ -53,8 +53,8 @@ function Home() {
                 <div className={[style.chooseUserTypeContainer, baseStyle.glassCard].join(' ')}>
                     <div className={style.chooseUserType}>Choose User Type</div>
                     <div className={style.userTypeBtnContainer}>
-                        <button className={[style.userTypeBtn, style.boyfriendBtn].join(' ')} onClick={onClickBoyfriend}>Boyfriend</button>
-                        <button className={[style.userTypeBtn, style.girlfriendBtn].join(' ')} onClick={onClickGirlfriend}>Girlfriend</button>
+                        <button className={[style.userTypeBtn, style.boyfriendBtn].join(' ')} onClick={onClickBoyfriend}>boyfriend</button>
+                        <button className={[style.userTypeBtn, style.girlfriendBtn].join(' ')} onClick={onClickGirlfriend}>girlfriend</button>
                         <button className={[style.userTypeBtn, style.dualBtn].join(' ')} onClick={onClickDual}>Dual</button>
                         <button className={[style.userTypeBtn, style.aiBtn].join(' ')} onClick={onClickAIMode}>AI Mode</button>
                     </div>

@@ -1,32 +1,21 @@
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { useAppSelector } from "../../redux/store";
 import baseStyle from "../../base.module.css";
 import style from "./style.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
 import { useState } from "react";
-import { setTraits } from "../../redux/gameSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { UserState } from "../../redux/userSlice";
-import useSetInitialArg from "../../hooks/useSetInitialArg";
 import ArgumentInput from "../../components/ArgumentInput/ArgumentInput";
 
 function Setup() {
     const gameSettings = useAppSelector((state) => state.game);
-    const dispatch = useAppDispatch();
-    const [isBfTabActive, setIsBfTabActive] = useState(gameSettings.game.currentUserType === "Boyfriend");
+    const [isBfTabActive, setIsBfTabActive] = useState(gameSettings.game.currentUserType === "boyfriend");
     const navigate = useNavigate();
     const userData: UserState = useSelector((state: any) => state.user);
 
-    const [bfArgument, setBfArgument] = useState("");
-    const [gfArgument, setGfArgument] = useState("");
-
-    const { mutate: setInitialArg, isPending, isSuccess, error } = useSetInitialArg();
-
-
     const configure = async () => {
-        // Reformat arguments if needed prior to configure
-
 
         try {
             // Send initial arguments and configuration to game backend APIs
@@ -40,7 +29,7 @@ function Setup() {
 
     const tabs = gameSettings.gamemode === "solo"
         ? [gameSettings.game.currentUserType]
-        : ["Boyfriend", "Girlfriend"];
+        : ["boyfriend", "girlfriend"];
 
     if (userData.loggedin) {
         return (
@@ -60,9 +49,9 @@ function Setup() {
                                     {tabs.map((tab) => (
                                         <Tab
                                             key={tab}
-                                            onClick={() => setIsBfTabActive(tab === "Boyfriend")}
+                                            onClick={() => setIsBfTabActive(tab === "boyfriend")}
                                             className={`${style.tab} `}
-                                            selectedClassName={`${tab === "Girlfriend" ? style.gfTab : style.bfTab} ${style.activeTab}`}
+                                            selectedClassName={`${tab === "girlfriend" ? style.gfTab : style.bfTab} ${style.activeTab}`}
                                         >
                                             {tab}
                                         </Tab>

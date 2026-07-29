@@ -8,18 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setInitialArgument, setTraits, } from '../../redux/gameSlice.ts';
 import useSetInitialArg from '../../hooks/useSetInitialArg.ts';
 import useGetInitialTraits from '../../hooks/useGetInitialTraits.ts';
-import type { Traits } from '../../redux/types.ts';
+import useGetFormatted from '../../hooks/useGetFormatted.tsx';
 
 
 const ArgumentInput: React.FC<ArgumentInputProps> = (
     { isBfTabActive }) => {
 
-    const currentUserType = isBfTabActive ? "Boyfriend" : "Girlfriend";
-    const [argument, setArgument] = useState("");
+    const currentUserType = isBfTabActive ? "boyfriend" : "girlfriend";
     const [isReformatting, setIsReformatting] = useState(false);
-    const { mutate: setInitialArg, isPending: initialArgPending, data, isSuccess: initialArgSuccess, error: initialArgError } = useSetInitialArg();
-    const { mutate: getInitialTraits, isPending: initialTraitsPending, data: initialTraits, isSuccess: initialTraitsSuccess, error: initialTraitsError } = useGetInitialTraits();
+    const initialArg = useSetInitialArg();
+    const initialTraits = useGetInitialTraits();
+    const formattedArgument = useGetFormatted();
     const userData = useSelector((state: any) => state.game);
+    const [argument, setArgument] = useState(isBfTabActive ? userData.game.boyfriend.initialArgument.content : userData.game.girlfriend.initialArgument.content);
 
     const dispatch = useDispatch();
 
@@ -27,19 +28,12 @@ const ArgumentInput: React.FC<ArgumentInputProps> = (
         const timer = setTimeout(() => {
             if (argument.trim() != "") {
 
-                isBfTabActive ?
-                    setInitialArg({
-                        username: userData.game.currentUser,
-                        boyfriend: {
-                            initialArgument: argument
-                        },
-                    }) :
-                    setInitialArg({
-                        username: userData.game.currentUser,
-                        girlfriend: {
-                            initialArgument: argument
-                        },
-                    })
+                initialArg.mutate({
+                    username: userData.game.currentUser,
+                    [currentUserType]: {
+                        initialArgument: argument
+                    },
+                });
             }
         }, 1000);
 
@@ -51,7 +45,7 @@ const ArgumentInput: React.FC<ArgumentInputProps> = (
         setArgument(argument);
         dispatch(setInitialArgument({
             id: "001",
-            from: isBfTabActive ? "Boyfriend" : "Girlfriend",
+            from: isBfTabActive ? "boyfriend" : "girlfriend",
             content: argument,
             timestamp: Date.now().toString(),
         }));
@@ -59,21 +53,27 @@ const ArgumentInput: React.FC<ArgumentInputProps> = (
 
     const reformatArgumentText = async (
         text: string,
-        userType: "Boyfriend" | "Girlfriend"
-    ): Promise<string> => {
-        // if (!text.trim()) {
-        //     return "";
-        // }
+        userType: "boyfriend" | "girlfriend"
+    ) => {
 
         try {
-            setInitialArg({
+            setIsReformatting(true);
+            formattedArgument.mutate({
                 username: userData.game.currentUser,
-                boyfriend: {
-                    initialArgument: argument
+                [userType]: {
+                    initialArgument: text
                 }
-            })
-            // console.log(initialArg?.data)
-            return ""
+            });
+
+            if (formattedArgument.data) {
+                setArgument(formattedArgument.data.data.formatted);
+                dispatch(setInitialArgument({
+                    id: "001",
+                    from: userType,
+                    content: formattedArgument.data.data.formatted,
+                    timestamp: Date.now().toString(),
+                }));
+            }
 
         } catch (err) {
             console.error(err);
@@ -83,33 +83,18 @@ const ArgumentInput: React.FC<ArgumentInputProps> = (
         }
     };
 
-    const reformatText = async (text: string, userType: "Boyfriend" | "Girlfriend") => {
 
-        // reformatArgumentText(text, userType).then((formattedArgument: string) => setArgument(formattedArgument));
+    const GenerateTraits = (text: string, userType: "boyfriend" | "girlfriend") => {
 
-    }
+        initialTraits.mutate({
+            username: userData.game.currentUser,
+            argument: text,
+            tags: userData.game[userType].tags
+        })
 
-    const GenerateTraits = (text: string, userType: "Boyfriend" | "Girlfriend") => {
-
-        if (userType === "Boyfriend") {
-            getInitialTraits({
-                username: userData.game.currentUser,
-                argument: text,
-                tags: userData.game.boyfriend.tags
-            });
-        }
-
-        if (userType === "Girlfriend") {
-            getInitialTraits({
-                username: userData.game.currentUser,
-                argument: text,
-                tags: userData.game.girlfriend.tags
-            })
-        }
-
-        if (initialTraits) {
+        if (initialTraits.data) {
             dispatch(setTraits({
-                traits: initialTraits.data.traits,
+                traits: initialTraits.data.data.traits,
                 userType: userType
             }));
         }

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import type { getInitalTraits } from "../api/type";
 import { getInitialTraits } from "../api/ai.api";
 

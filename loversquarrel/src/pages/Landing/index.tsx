@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import useLogin from '../../hooks/queries/useLogin';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

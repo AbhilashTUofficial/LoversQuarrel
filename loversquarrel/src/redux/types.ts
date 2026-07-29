@@ -34,7 +34,7 @@ export type GameMode = "ai" | "dual" | "solo";
 
 export type Argument = {
   id: number | string;
-  from: "Boyfriend" | "Girlfriend" | "system";
+  from: "boyfriend" | "girlfriend" | "system";
   content: string;
   timestamp: string; // Serialized date representation for Redux
 };
@@ -56,7 +56,7 @@ export type ChaosCards = {
 export type GameState = {
   gamemode: GameMode;
   game: {
-    currentUserType: "Boyfriend" | "Girlfriend";
+    currentUserType: "boyfriend" | "girlfriend";
     gameStarted: boolean;
     stats: {
       relationshipHealth: number;

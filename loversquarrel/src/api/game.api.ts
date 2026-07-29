@@ -1,5 +1,5 @@
 import { api } from "./client";
-import type { argument, getInitalTraits, traits } from "./type";
+import type { argument, traits } from "./type";
 
 export const postInitialArgument = (argument: argument) => {
   return api.post("/game/setInitialArgument", { argument });

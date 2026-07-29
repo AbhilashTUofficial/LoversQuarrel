@@ -5,15 +5,13 @@ import { Info } from "lucide-react";
 
 
 import { ChaosCard, AddChaosCard } from "./ChaosCard";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { toggleChaosCard } from "../../redux/gameSlice";
+import { useAppSelector } from "../../redux/store";
 
 function ChaosPanel() {
-    const dispatch = useAppDispatch();
     const userData = useAppSelector((state) => state.game);
 
 
-    const chaosCards = Object.values(userData.game.currentUserType === "Boyfriend" ? userData.game.boyfriend.chaosCards : userData.game.girlfriend.chaosCards);
+    const chaosCards = Object.values(userData.game.currentUserType === "boyfriend" ? userData.game.boyfriend.chaosCards : userData.game.girlfriend.chaosCards);
 
     return (
         <div className={styles.chaosPanel}>
@@ -24,10 +22,14 @@ function ChaosPanel() {
             </div>
 
             <div className={styles.chaosCards}>
-                {chaosCards.map((card) => (
+                {chaosCards.map((card, index) => (
                     <ChaosCard
-                        key={card.id}
-                        {...card}
+                        key={index}
+                        id={card.id}
+                        isActivated={card.isActivated}
+                        content={card.content}
+                        title={card.title}
+                        isUsed={card.isUsed}
                     />
                 ))}
 

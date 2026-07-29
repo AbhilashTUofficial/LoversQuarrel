@@ -12,7 +12,7 @@ import type { Argument } from "./types";
 function ArgumentArena() {
     const dispatch = useAppDispatch();
     const argumentStack = useAppSelector((state) => state.game.game.argumentStack);
-    const relationshipHealth = useAppSelector((state) => state.game.game.relationshipHealth);
+    const relationshipHealth = useAppSelector((state) => state.game.game.stats.relationshipHealth);
     const currentUserType = useAppSelector((state) => state.game.game.currentUserType);
 
     const insertArgument = (newArgument: string) => {
@@ -47,11 +47,11 @@ function ArgumentArena() {
                         className={`${styles.argumentContainer} ${styles[`${argument.from}Argument`]
                             }`}
                     >
-                        {argument.from === "Boyfriend" ? (
+                        {argument.from === "boyfriend" ? (
                             <img
                                 src={boyfriend}
                                 className={styles.avatar}
-                                alt="Boyfriend"
+                                alt="boyfriend"
                             />
                         ) : null}
 
@@ -68,11 +68,11 @@ function ArgumentArena() {
                             </div>
                         </div>
 
-                        {argument.from === "Girlfriend" ? (
+                        {argument.from === "girlfriend" ? (
                             <img
                                 src={girlfriend}
                                 className={styles.avatar}
-                                alt="Girlfriend"
+                                alt="girlfriend"
                             />
                         ) : null}
                     </div>
@@ -83,7 +83,7 @@ function ArgumentArena() {
 
             <ArgumentInput
                 setArgument={insertArgument}
-                isBoyfriend={currentUserType === "Boyfriend"}
+                isBoyfriend={currentUserType === "boyfriend"}
             />
         </div>
     );

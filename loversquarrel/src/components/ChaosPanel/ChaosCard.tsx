@@ -5,19 +5,28 @@ import screenshotEvidence from "../../assets/images/chaos_img_02.png";
 import includeMom from "../../assets/images/chaos_img_03.png";
 import leaveOnRead from "../../assets/images/chaos_img_04.png";
 import callBestFriend from "../../assets/images/chaos_img_05.png";
-
 import { Plus } from "lucide-react";
 
-export const ChaosCard = ({ id, isActivated, content, title, isUsed }) => {
+export const ChaosCard = ({ id, isActivated, content, title, isUsed }: { id: string | number, isActivated: boolean, content: string, title: string, isUsed: boolean }) => {
 
-    const imageMap = {
-        "oldIncidentChaosCard": oldIncident,
-        "evidenceChaosCard": screenshotEvidence,
-        "includeMomChaosCard": includeMom,
-        "leaveOnReadChaosCard": leaveOnRead,
-        "bestFriendChaosCard": callBestFriend,
-    }
-    let image = imageMap[id];
+    type ChaosCardKeys =
+        | "oldIncidentChaosCard"
+        | "evidenceChaosCard"
+        | "includeMomChaosCard"
+        | "leaveOnReadChaosCard"
+        | "bestFriendChaosCard";
+
+    const imageMap: Record<ChaosCardKeys, string> = {
+        oldIncidentChaosCard: oldIncident,
+        evidenceChaosCard: screenshotEvidence,
+        includeMomChaosCard: includeMom,
+        leaveOnReadChaosCard: leaveOnRead,
+        bestFriendChaosCard: callBestFriend,
+    };
+
+    const image = imageMap[id as ChaosCardKeys];
+
+
 
     return (
         <div
@@ -34,6 +43,10 @@ export const ChaosCard = ({ id, isActivated, content, title, isUsed }) => {
 
             <div className={baseStyle.subtitle}>
                 {title}
+            </div>
+
+            <div>
+                {`${content} ${isUsed ? " (used)" : ""}`}
             </div>
         </div>
     );

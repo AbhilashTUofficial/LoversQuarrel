@@ -3,6 +3,7 @@
 /** Props for the PlayerTraits slider list */
 export type PlayerTraitsProps = {
   isBoyfriend: boolean;
+  gameMode: string;
 };
 
 /** A single rendered trait row */

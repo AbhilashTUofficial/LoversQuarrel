@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import type { argument, traits } from "../api/type";
-import { postInitialArgument, postTraits } from "../api/game.api";
+import { useMutation } from "@tanstack/react-query";
+import type { traits } from "../api/type";
+import { postTraits } from "../api/game.api";
 
 const useSetTraits = () => {
   return useMutation({

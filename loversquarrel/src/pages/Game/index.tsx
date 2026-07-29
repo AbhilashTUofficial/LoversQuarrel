@@ -33,7 +33,7 @@ export default function Game() {
 
             <footer className={layoutStyle.gameControlLayout}>
                 <section className={[baseStyle.glassCard,
-                gameSettings.game.currentUserType === "Boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
+                gameSettings.game.currentUserType === "boyfriend" ? style.bfBorder : style.gfBorder].join(' ')}>
                     <ChaosPanel />
                 </section>
                 <section>

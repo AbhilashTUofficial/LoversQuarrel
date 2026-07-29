@@ -2,12 +2,17 @@ import AiPromptLog from "./ai.model.js";
 
 const getReformattedArgument = async (argumentData) => {
     try {
-        argumentData.argument;
         console.log(argumentData)
-
-        return {
-            argument: `${argumentData.boyfriend.initialArgument} [Refined]`
+        const argument = argumentData.argument;
+        if (argument.boyfriend) {
+            const boyfriendInitialArgument = argumentData.argument.boyfriend.initialArgument;
+            return { formatted: `${boyfriendInitialArgument} [Refined]`, status: "Success" }
         }
+        if (argument.girlfriend) {
+            const girlfriendInitialArgument = argumentData.argument.girlfriend.initialArgument;
+            return { formatted: `${girlfriendInitialArgument} [Refined]`, status: "Success" }
+        }
+        return { formatted: "", status: "Fail" }
 
     } catch (error) {
         console.error("Error in reformatArgument service:", error);

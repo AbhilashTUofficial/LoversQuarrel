@@ -10,12 +10,12 @@ function PlayerHeader({ isBoyfriend, mode }: PlayerHeaderProps) {
             <img
                 src={boyfriend}
                 className={styles.avatar}
-                alt="Boyfriend"
+                alt="boyfriend"
             />
 
             <div className={styles.nameTag}>
                 <div className={`${styles.name} ${styles.boyName}`}>
-                    Boyfriend
+                    boyfriend
 
                     <div
                         className={`${styles.bulb} ${styles.bulbBoy}`}
@@ -34,12 +34,12 @@ function PlayerHeader({ isBoyfriend, mode }: PlayerHeaderProps) {
             <img
                 src={girlfriend}
                 className={styles.avatar}
-                alt="Girlfriend"
+                alt="girlfriend"
             />
 
             <div className={styles.nameTag}>
                 <div className={`${styles.name} ${styles.girlName}`}>
-                    Girlfriend
+                    girlfriend
 
                     <div
                         className={`${styles.bulb} ${styles.bulbGirl}`}
