@@ -44,9 +44,8 @@ function ArgumentTags({ isBoyfriend, onAddTag, onRemoveTag }: ArgumentTagsProps)
 
                 <div
                     className={styles.addNewTag}
-                    onClick={handleAddTag}
-                >
-                    + Add Tag
+                    onClick={handleAddTag}>
+                    + Add tag
                 </div>
             </div>
         </div>

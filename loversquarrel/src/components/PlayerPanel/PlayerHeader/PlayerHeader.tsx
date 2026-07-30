@@ -14,8 +14,8 @@ function PlayerHeader({ isBoyfriend, mode }: PlayerHeaderProps) {
             />
 
             <div className={styles.nameTag}>
-                <div className={`${styles.name} ${styles.boyName}`}>
-                    boyfriend
+                <div className={`${styles.name}  ${isBoyfriend ? styles.boyName : styles.girlName}`}>
+                    Boyfriend
 
                     <div
                         className={`${styles.bulb} ${styles.bulbBoy}`}
@@ -39,7 +39,7 @@ function PlayerHeader({ isBoyfriend, mode }: PlayerHeaderProps) {
 
             <div className={styles.nameTag}>
                 <div className={`${styles.name} ${styles.girlName}`}>
-                    girlfriend
+                    Girlfriend
 
                     <div
                         className={`${styles.bulb} ${styles.bulbGirl}`}

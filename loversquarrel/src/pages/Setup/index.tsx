@@ -29,19 +29,12 @@ function Setup() {
 
     const tabs = gameSettings.gamemode === "solo"
         ? [gameSettings.game.currentUserType]
-        : ["boyfriend", "girlfriend"];
+        : ["Boyfriend", "Girlfriend"];
 
     if (userData.loggedin) {
         return (
             <div className={`${style.setupContainer}`}>
                 <div className={`${baseStyle.glassCard} ${style.setupCard}`}>
-                    <div className={style.setupHeader}>
-                        {gameSettings.gamemode === "ai" ? (
-                            <div className={style.headerTxt}>Configure AI</div>
-                        ) : (
-                            <div className={style.headerTxt}>Configure {gameSettings.game.currentUserType}</div>
-                        )}
-                    </div>
                     <div className={style.content}>
                         <Tabs className={style.tabs}>
                             <div className={style.tabsHeader}>
@@ -49,7 +42,7 @@ function Setup() {
                                     {tabs.map((tab) => (
                                         <Tab
                                             key={tab}
-                                            onClick={() => setIsBfTabActive(tab === "boyfriend")}
+                                            onClick={() => setIsBfTabActive(tab === "Boyfriend")}
                                             className={`${style.tab} `}
                                             selectedClassName={`${tab === "girlfriend" ? style.gfTab : style.bfTab} ${style.activeTab}`}
                                         >
@@ -64,8 +57,7 @@ function Setup() {
                                 <TabPanel
                                     key={tab}
                                     className={style.tabPanel}
-                                    selectedClassName={style.activePanel}
-                                >
+                                    selectedClassName={style.activePanel}>
                                     <ArgumentInput
                                         isBfTabActive={isBfTabActive} />
                                     <ChaosPanel />

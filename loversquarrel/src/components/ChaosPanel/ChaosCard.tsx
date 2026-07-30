@@ -26,13 +26,10 @@ export const ChaosCard = ({ id, isActivated, content, title, isUsed }: { id: str
 
     const image = imageMap[id as ChaosCardKeys];
 
-
-
     return (
         <div
             className={`${baseStyle.card} ${styles.chaosCard} ${isActivated ? styles.chaosCardActivated : ""}`}
-            onClick={() => { }}
-            role="button"
+            onClick={() => console.log(content, isUsed)} role="button"
             aria-pressed={isActivated}
         >
             <img
@@ -44,19 +41,13 @@ export const ChaosCard = ({ id, isActivated, content, title, isUsed }: { id: str
             <div className={baseStyle.subtitle}>
                 {title}
             </div>
-
-            <div>
-                {`${content} ${isUsed ? " (used)" : ""}`}
-            </div>
         </div>
     );
 };
 
 export const AddChaosCard = () => {
     return (
-        <div
-            className={`${baseStyle.card} ${styles.chaosCard} ${styles.addCard}`}
-        >
+        <div className={`${baseStyle.card} ${styles.chaosCard} ${styles.addCard}`}>
             <Plus style={{ width: 60, height: 60 }} />
         </div>
     );

@@ -5,6 +5,7 @@
   align-items: center;
   gap: 16px;
   width: 100%;
+  padding: 36px 12px;
 }
 
 .setupCard {
@@ -13,11 +14,8 @@
   gap: 16px;
   width: 60%;
   height: fit-content;
-  padding: 12px;
-}
-
-.setupHeader {
-  /* background-color: red; */
+  padding: 16px;
+  padding-top: 32px;
 }
 
 .headerTxt {
