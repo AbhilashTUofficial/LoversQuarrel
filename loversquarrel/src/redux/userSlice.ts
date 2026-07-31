@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { UserRoleWithNull as UserRole, UserState } from "../types";
+import type { UserRole, UserState } from "../types";
 
 export type { UserRole, UserState };
 
 const initialState: UserState = {
   username: null,
   usertoken: null,
-  usertype: null,
+  usertype: "girlfriend",
   loggedin: false,
   userdetails: {},
   loading: false,
@@ -38,7 +38,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.username = null;
       state.usertoken = null;
-      state.usertype = null;
+      state.usertype = "girlfriend";
       state.loggedin = false;
       state.userdetails = {};
       state.loading = false;

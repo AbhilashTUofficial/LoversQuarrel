@@ -201,6 +201,10 @@ const gameSlice = createSlice({
       state.gamemode = action.payload;
     },
 
+    setUserRole: (state, action: PayloadAction<UserRole>) => {
+      state.game.currentUserType = action.payload;
+    },
+
     setCurrentUserType: (
       state,
       action: PayloadAction<"boyfriend" | "girlfriend">,
@@ -316,14 +320,15 @@ const gameSlice = createSlice({
     addArgument: (
       state,
       action: PayloadAction<{
-        from: "boyfriend" | "girlfriend" | "system";
+        from: ArgumentSender;
         content: string;
       }>,
     ) => {
       state.game.argumentStack.push({
         id: state.game.argumentStack.length + 1,
         timestamp: new Date().toISOString(),
-        ...action.payload,
+        from: action.payload.from,
+        content: action.payload.content,
       });
     },
 
@@ -377,6 +382,7 @@ const gameSlice = createSlice({
 
 export const {
   setGameMode,
+  setUserRole,
   setChaosCard,
   toggleChaosCard,
   setStats,

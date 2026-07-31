@@ -1,6 +1,5 @@
 export type {
   UserRole,
-  UserRoleWithNull,
   ArgumentSender,
   GameMode,
   PlayerStance,

@@ -1,5 +1,4 @@
 export type UserRole = "boyfriend" | "girlfriend";
-export type UserRoleWithNull = UserRole | null;
 export type ArgumentSender = UserRole | "system";
 export type GameMode = "ai" | "dual" | "solo";
 export type PlayerStance = "Defensive" | "Offensive" | "Furious";
@@ -101,7 +100,7 @@ export interface GameState {
 export interface UserState {
   username: string | null;
   usertoken: string | null;
-  usertype: UserRoleWithNull;
+  usertype: UserRole;
   loggedin: boolean;
   userdetails: Record<string, any>;
   loading: boolean;
