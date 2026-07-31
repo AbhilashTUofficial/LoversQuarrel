@@ -1,9 +1,8 @@
 import styles from "./style.module.css";
 import baseStyle from "../../../base.module.css";
-
 import { Info, X } from "lucide-react";
 import type { ArgumentTagsProps } from "./types";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../redux/store";
 
 function ArgumentTags({ isBoyfriend, onAddTag, onRemoveTag }: ArgumentTagsProps) {
     const handleAddTag = () => {
@@ -13,14 +12,13 @@ function ArgumentTags({ isBoyfriend, onAddTag, onRemoveTag }: ArgumentTagsProps)
         }
     };
 
-    const userData = useSelector((state: any) => state.game);
+    const userData = useAppSelector((state) => state.game);
     const activeTags: string[] = isBoyfriend ? userData.game.boyfriend.tags : userData.game.girlfriend.tags;
 
     return (
         <div className={styles.activeTagContainer}>
             <div className={baseStyle.subtitle}>
                 ACTIVE TAGS
-
                 <Info className={baseStyle.infoIcon} />
             </div>
 

@@ -5,21 +5,17 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import ChaosPanel from "../../components/ChaosPanel/ChaosPanel";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import type { UserState } from "../../redux/userSlice";
 import ArgumentInput from "../../components/ArgumentInput/ArgumentInput";
 
 function Setup() {
     const gameSettings = useAppSelector((state) => state.game);
     const [isBfTabActive, setIsBfTabActive] = useState(gameSettings.game.currentUserType === "boyfriend");
     const navigate = useNavigate();
-    const userData: UserState = useSelector((state: any) => state.user);
+    const userData = useAppSelector((state) => state.user);
 
     const configure = async () => {
-
         try {
             // Send initial arguments and configuration to game backend APIs
-
         } catch (error) {
             console.error("Failed to save game settings:", error);
         }
@@ -68,21 +64,18 @@ function Setup() {
                 </div>
             </div>
         );
-    }
-    else {
+    } else {
         setTimeout(() => {
-            navigate("/")
-        }, 500)
+            navigate("/");
+        }, 500);
         return (
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
                 <div className={[baseStyle.userLoggingOutContainer, baseStyle.glassCard].join(' ')}>
                     <div className={baseStyle.userLoggingOut}>User logging out...</div>
                 </div>
             </div>
-        )
+        );
     }
-
 }
-
 
 export default Setup;

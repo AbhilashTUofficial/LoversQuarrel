@@ -1,8 +1,8 @@
-/** Player stance mode label shown under the player avatar */
-export type PlayerStance = "Defensive" | "Offensive" | "Furious";
+import type { PlayerStance } from "../../../types";
 
-/** Props for PlayerHeader avatar + name + stance indicator */
-export type PlayerHeaderProps = {
+export type { PlayerStance };
+
+export interface PlayerHeaderProps {
   isBoyfriend: boolean;
   mode: PlayerStance;
-};
+}

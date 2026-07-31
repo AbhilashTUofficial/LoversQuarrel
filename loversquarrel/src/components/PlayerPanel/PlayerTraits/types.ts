@@ -1,13 +1,8 @@
-/** Re-export so consumers import from one place */
+import type { GameMode, Trait } from "../../../types";
 
-/** Props for the PlayerTraits slider list */
-export type PlayerTraitsProps = {
+export type TraitRow = Trait;
+
+export interface PlayerTraitsProps {
   isBoyfriend: boolean;
-  gameMode: string;
-};
-
-/** A single rendered trait row */
-export type TraitRow = {
-  name: string;
-  value: number;
-};
+  gameMode: GameMode;
+}

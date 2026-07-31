@@ -1,29 +1,23 @@
-import type { Traits } from "../redux/types";
+import type { Traits, UserRole } from "../types";
 
-export type argument = {
+export interface ArgumentPayload {
   username: string;
-  boyfriend?: {
-    initialArgument: string;
-  };
-  girlfriend?: {
-    initialArgument: string;
-  };
-};
+  boyfriend?: { initialArgument: string };
+  girlfriend?: { initialArgument: string };
+}
 
-export type traits = {
-  username: string;
-  traits: {
-    boyfriend?: {
-      traits: Traits;
-    };
-    girlfriend?: {
-      traits: Traits;
-    };
-  };
-};
+export type argument = ArgumentPayload;
 
-export type getInitalTraits = {
+export interface PlayerTraitsPayload {
+  traits: Partial<Record<UserRole, { traits: Traits }>>;
+}
+
+export type traits = { username: string } & PlayerTraitsPayload;
+
+export interface GetInitialTraitsPayload {
   username: string;
   argument: string;
   tags: string[];
-};
+}
+
+export type getInitalTraits = GetInitialTraitsPayload;

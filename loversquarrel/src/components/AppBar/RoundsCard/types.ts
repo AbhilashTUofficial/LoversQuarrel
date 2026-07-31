@@ -1,12 +1,5 @@
-/** Status label describing the heat level of the current round */
-export type RoundStatus =
-  | "Chill ❄️"
-  | "Heated 🔥"
-  | "Toxic ☠️"
-  | "Nuclear 💥";
+import type { RoundStatus, RoundState } from "../../../types";
 
-/** Round data shape from Redux */
-export type RoundState = {
-  roundNumber: number;
-  roundStatus: RoundStatus | string; // string fallback for custom statuses
-};
+export type { RoundStatus, RoundState };
+
+export interface RoundsCardProps extends Partial<RoundState> {}

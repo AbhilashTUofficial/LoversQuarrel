@@ -6,49 +6,43 @@ import includeMom from "../../assets/images/chaos_img_03.png";
 import leaveOnRead from "../../assets/images/chaos_img_04.png";
 import callBestFriend from "../../assets/images/chaos_img_05.png";
 import { Plus } from "lucide-react";
+import type { ChaosCardProps, ChaosCardKeys } from "./types";
 
-export const ChaosCard = ({ id, isActivated, content, title, isUsed }: { id: string | number, isActivated: boolean, content: string, title: string, isUsed: boolean }) => {
+export const ChaosCard = ({ id, isActivated, content, title, isUsed }: ChaosCardProps) => {
+  const imageMap: Record<ChaosCardKeys, string> = {
+    oldIncidentChaosCard: oldIncident,
+    evidenceChaosCard: screenshotEvidence,
+    includeMomChaosCard: includeMom,
+    leaveOnReadChaosCard: leaveOnRead,
+    bestFriendChaosCard: callBestFriend,
+  };
 
-    type ChaosCardKeys =
-        | "oldIncidentChaosCard"
-        | "evidenceChaosCard"
-        | "includeMomChaosCard"
-        | "leaveOnReadChaosCard"
-        | "bestFriendChaosCard";
+  const image = imageMap[id as ChaosCardKeys];
 
-    const imageMap: Record<ChaosCardKeys, string> = {
-        oldIncidentChaosCard: oldIncident,
-        evidenceChaosCard: screenshotEvidence,
-        includeMomChaosCard: includeMom,
-        leaveOnReadChaosCard: leaveOnRead,
-        bestFriendChaosCard: callBestFriend,
-    };
+  return (
+    <div
+      className={`${baseStyle.card} ${styles.chaosCard} ${isActivated ? styles.chaosCardActivated : ""}`}
+      onClick={() => console.log(content, isUsed)}
+      role="button"
+      aria-pressed={isActivated}
+    >
+      <img
+        className={styles.chaosImage}
+        src={image}
+        alt={title}
+      />
 
-    const image = imageMap[id as ChaosCardKeys];
-
-    return (
-        <div
-            className={`${baseStyle.card} ${styles.chaosCard} ${isActivated ? styles.chaosCardActivated : ""}`}
-            onClick={() => console.log(content, isUsed)} role="button"
-            aria-pressed={isActivated}
-        >
-            <img
-                className={styles.chaosImage}
-                src={image}
-                alt={title}
-            />
-
-            <div className={baseStyle.subtitle}>
-                {title}
-            </div>
-        </div>
-    );
+      <div className={baseStyle.subtitle}>
+        {title}
+      </div>
+    </div>
+  );
 };
 
 export const AddChaosCard = () => {
-    return (
-        <div className={`${baseStyle.card} ${styles.chaosCard} ${styles.addCard}`}>
-            <Plus style={{ width: 60, height: 60 }} />
-        </div>
-    );
+  return (
+    <div className={`${baseStyle.card} ${styles.chaosCard} ${styles.addCard}`}>
+      <Plus style={{ width: 60, height: 60 }} />
+    </div>
+  );
 };

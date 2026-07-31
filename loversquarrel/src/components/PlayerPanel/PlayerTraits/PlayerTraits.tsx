@@ -2,13 +2,11 @@ import styles from "./style.module.css";
 import baseStyle from "../../../base.module.css";
 import { Info } from "lucide-react";
 import type { PlayerTraitsProps, TraitRow } from "./types";
-import { useSelector } from "react-redux";
-import type { Traits } from "../../../redux/types";
+import { useAppSelector } from "../../../redux/store";
+import type { Traits } from "../../../types";
 
 function PlayerTraits({ isBoyfriend, gameMode }: PlayerTraitsProps) {
-
-
-    const userData = useSelector((state: any) => state.game);
+    const userData = useAppSelector((state) => state.game);
     const traits: Traits = isBoyfriend ? userData.game.boyfriend.traits : userData.game.girlfriend.traits;
 
     const traitRows: TraitRow[] = [
@@ -51,7 +49,6 @@ function PlayerTraits({ isBoyfriend, gameMode }: PlayerTraitsProps) {
                                 {
                                     gameMode === "ai" && <div className={styles.thumb} />
                                 }
-
                             </div>
                         </div>
 

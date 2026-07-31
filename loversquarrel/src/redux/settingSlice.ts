@@ -1,10 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { SettingState } from "../types";
 
-export type SettingState = {
-  theme: "darkmode" | "lightmode";
-  mode: "ai" | "manual";
-  userLoggedin: boolean;
-};
+export type { SettingState };
 
 const initialState: SettingState = {
   theme: "darkmode",

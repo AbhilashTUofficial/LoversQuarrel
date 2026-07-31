@@ -1,15 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { UserRoleWithNull as UserRole, UserState } from "../types";
 
-export type UserRole = "boyfriend" | "girlfriend" | null;
-
-export type UserState = {
-  username: string | null;
-  usertoken: string | null;
-  usertype: UserRole;
-  loggedin: boolean;
-  userdetails: any;
-  loading: boolean;
-};
+export type { UserRole, UserState };
 
 const initialState: UserState = {
   username: null,

@@ -1,10 +1,3 @@
-// ─── Shared primitive types used across ArgumentArena ─────────────────────────
+import type { ArgumentSender, Argument } from "../../types";
 
-export type ArgumentSender = "boyfriend" | "girlfriend" | "system";
-
-export type Argument = {
-  id: number;
-  from: ArgumentSender;
-  content: string;
-  timestamp: string; // ISO string — must be serializable for Redux
-};
+export type { ArgumentSender, Argument };

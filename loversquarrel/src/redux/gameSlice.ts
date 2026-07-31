@@ -7,7 +7,9 @@ import type {
   StatsKeys,
   CaseDetails,
   Argument,
-} from "./types";
+  UserRole,
+  ArgumentSender,
+} from "../types";
 
 const initialTraits: Traits = {
   intellect: 0,

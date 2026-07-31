@@ -1,18 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUserToken, setUserType, type UserState } from '../../redux/userSlice';
+import { setUserToken, setUserType } from '../../redux/userSlice';
 import style from "./style.module.css";
-import baseStyle from "../../base.module.css"
+import baseStyle from "../../base.module.css";
 import { setCurrentUserType, setGameMode } from '../../redux/gameSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 
 function Home() {
-
-
-
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const userData: UserState = useSelector((state: any) => state.user);
-
+    const userData = useAppSelector((state) => state.user);
 
     const onClickBoyfriend = () => {
         dispatch(setUserToken("boyfriend"));
@@ -20,7 +16,7 @@ function Home() {
         dispatch(setCurrentUserType("boyfriend"));
         dispatch(setGameMode("solo"));
         navigate('/setup');
-    }
+    };
 
     const onClickGirlfriend = () => {
         dispatch(setUserToken("girlfriend"));
@@ -28,7 +24,7 @@ function Home() {
         dispatch(setCurrentUserType("girlfriend"));
         dispatch(setGameMode("solo"));
         navigate('/setup');
-    }
+    };
 
     const onClickDual = () => {
         dispatch(setUserToken('dual'));
@@ -36,7 +32,7 @@ function Home() {
         dispatch(setGameMode("dual"));
         dispatch(setCurrentUserType("girlfriend"));
         navigate('/setup');
-    }
+    };
 
     const onClickAIMode = () => {
         dispatch(setUserToken('dual'));
@@ -44,10 +40,11 @@ function Home() {
         dispatch(setCurrentUserType("girlfriend"));
         dispatch(setGameMode("ai"));
         navigate('/setup');
-    }
-    console.log("userdata: ", userData);
-    if (userData.loggedin) {
+    };
 
+    console.log("userdata: ", userData);
+
+    if (userData.loggedin) {
         return (
             <div className={[style.pageContainer, style.homeContainer].join(' ')}>
                 <div className={[style.chooseUserTypeContainer, baseStyle.glassCard].join(' ')}>
@@ -60,20 +57,19 @@ function Home() {
                     </div>
                 </div>
             </div>
-        )
-    }
-    else {
+        );
+    } else {
         setTimeout(() => {
-            navigate("/")
-        }, 500)
+            navigate("/");
+        }, 500);
         return (
             <div className={[style.pageContainer, style.homeContainer].join(' ')}>
                 <div className={[baseStyle.userLoggingOutContainer, baseStyle.glassCard].join(' ')}>
                     <div className={baseStyle.userLoggingOut}>User logging out...</div>
                 </div>
-            </div>)
+            </div>
+        );
     }
-
 }
 
-export default Home
+export default Home;

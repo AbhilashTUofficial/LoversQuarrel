@@ -1,13 +1,12 @@
-export type Trait = {
-  name: string;
-  value: number;
-};
+import type { Trait, GameMode } from "../../types";
 
-export type PlayerTraitsProps = {
+export type { Trait };
+
+export interface PlayerTraitsProps {
   traits: Trait[];
   isBoyfriend: boolean;
-  gameMode: string;
-};
+  gameMode: GameMode;
+}
 
 export interface ArgumentInputProps {
   isBfTabActive: boolean;
